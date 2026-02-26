@@ -1,0 +1,20 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color blue_500
+color green_500
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable border_blue
+drawable border_green
+id btnStartStop
+id tvAiResponse
+id tvRecognizedText
+id tvStatus
+layout activity_main
+string app_name
+style Theme.OpenClawHomeAssistant

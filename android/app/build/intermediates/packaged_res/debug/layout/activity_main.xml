@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="准备就绪"
+        android:textSize="16sp"
+        android:textColor="@color/purple_500"
+        android:gravity="center"
+        android:paddingBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnStartStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始识别"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tvRecognizedText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="识别结果: "
+        android:textSize="14sp"
+        android:padding="8dp"
+        android:background="@drawable/border_blue"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvAiResponse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AI回复: "
+        android:textSize="14sp"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border_green"
+        android:visibility="gone"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="隐私说明"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingTop="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="• 仅使用麦克风权限进行语音识别\n• 音频在设备本地处理\n• 仅文本（非音频）发送到AI服务\n• 未经您的同意不收集任何个人数据"
+        android:textSize="12sp"
+        android:paddingTop="8dp"
+        android:lineSpacingExtra="4dp"/>
+
+</LinearLayout>
