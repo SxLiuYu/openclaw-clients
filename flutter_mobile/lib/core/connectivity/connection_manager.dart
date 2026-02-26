@@ -20,10 +20,13 @@ class ConnectionManager {
   late IOWebSocketChannel _webSocketChannel;
   final StreamController<ConnectionStatus> _connectionStatusController = 
       StreamController<ConnectionStatus>.broadcast();
+  final StreamController<String> _errorController = 
+      StreamController<String>.broadcast();
   String? _controlServerUrl;
   bool _isConnected = false;
   
   Stream<ConnectionStatus> get connectionStatusStream => _connectionStatusController.stream;
+  Stream<String> get onError => _errorController.stream;
   
   Future<void> initialize() async {
     await dotenv.load(fileName: ".env");
@@ -51,6 +54,7 @@ class ConnectionManager {
           _handleIncomingMessage(message);
         },
         onError: (error) {
+          _errorController.add('Connection error: $error');
           _updateConnectionStatus(false, 'Connection error: $error');
         },
         onDone: () {
@@ -62,21 +66,32 @@ class ConnectionManager {
       _isConnected = true;
       _updateConnectionStatus(true, 'Connected to control server');
     } catch (e) {
+      _errorController.add('Failed to connect: $e');
       _updateConnectionStatus(false, 'Failed to connect: $e');
     }
   }
   
   void sendMessage(dynamic message) {
     if (_isConnected) {
-      _webSocketChannel.sink.add(jsonEncode(message));
+      try {
+        _webSocketChannel.sink.add(jsonEncode(message));
+      } catch (e) {
+        _errorController.add('Failed to send message: $e');
+      }
+    } else {
+      _errorController.add('Not connected to control server');
     }
   }
   
   void _handleIncomingMessage(dynamic message) {
     // 处理控制端指令
     // 例如：请求特定数据、调整收集频率等
-    final decodedMessage = jsonDecode(message as String);
-    // TODO: 实现具体的消息处理逻辑
+    try {
+      final decodedMessage = jsonDecode(message as String);
+      // TODO: 实现具体的消息处理逻辑
+    } catch (e) {
+      _errorController.add('Failed to parse incoming message: $e');
+    }
   }
   
   void _updateConnectionStatus(bool connected, String message) {
@@ -89,5 +104,6 @@ class ConnectionManager {
   void dispose() {
     _webSocketChannel.sink.close();
     _connectionStatusController.close();
+    _errorController.close();
   }
 }

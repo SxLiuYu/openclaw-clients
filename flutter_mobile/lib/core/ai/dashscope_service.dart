@@ -20,6 +20,48 @@ class DashScopeService {
     }
   }
 
+  // 处理用户查询
+  Future<String> processQuery(String query) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$_baseUrl/services/aigc/text-generation/generation'),
+        headers: {
+          'Authorization': 'Bearer $_apiKey',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'model': 'qwen-max',
+          'input': {
+            'messages': [
+              {
+                'role': 'system',
+                'content': '你是一个家庭助手，请理解用户的语音指令并提供相应的帮助。'
+              },
+              {
+                'role': 'user',
+                'content': query
+              }
+            ]
+          },
+          'parameters': {
+            'temperature': 0.7,
+            'top_p': 0.8,
+            'max_tokens': 500,
+          }
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        return data['output']['choices'][0]['message']['content'];
+      } else {
+        throw Exception('API request failed with status ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Failed to process query: $e');
+    }
+  }
+
   // 文本生成（对话）
   Future<String> generateText({
     required String prompt,
