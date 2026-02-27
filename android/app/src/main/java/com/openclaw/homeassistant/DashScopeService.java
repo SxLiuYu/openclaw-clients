@@ -21,6 +21,14 @@ public class DashScopeService {
         void onError(String error);
     }
     
+    public interface SuccessCallback {
+        void onSuccess(String response);
+    }
+    
+    public interface ErrorCallback {
+        void onError(String error);
+    }
+    
     public DashScopeService(Context context) {
         this.preferences = context.getSharedPreferences("OpenClawPrefs", Context.MODE_PRIVATE);
         this.client = new OkHttpClient.Builder()
@@ -102,6 +110,74 @@ public class DashScopeService {
             });
         } catch (Exception e) {
             callback.onError("请求构建失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 处理查询（带自定义消息列表 - 用于多轮对话）
+     */
+    public void processQueryWithMessages(JSONArray messages, 
+                                         SuccessCallback successCallback, 
+                                         ErrorCallback errorCallback) {
+        String apiKey = preferences.getString(API_KEY_PREFERENCE, "");
+        if (apiKey.isEmpty()) {
+            errorCallback.onError("API 密钥未配置");
+            return;
+        }
+        
+        try {
+            JSONObject requestBody = new JSONObject();
+            requestBody.put("model", "qwen-max");
+            
+            JSONObject input = new JSONObject();
+            input.put("messages", messages);
+            requestBody.put("input", input);
+            
+            JSONObject parameters = new JSONObject();
+            parameters.put("temperature", 0.7);
+            parameters.put("top_p", 0.8);
+            parameters.put("max_tokens", 500);
+            requestBody.put("parameters", parameters);
+            
+            Request request = new Request.Builder()
+                .url(BASE_URL + "/services/aigc/text-generation/generation")
+                .addHeader("Authorization", "Bearer " + apiKey)
+                .addHeader("Content-Type", "application/json")
+                .post(RequestBody.create(
+                    requestBody.toString(), 
+                    MediaType.parse("application/json")
+                ))
+                .build();
+            
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    errorCallback.onError("网络请求失败：" + e.getMessage());
+                }
+                
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    try {
+                        String responseBody = response.body().string();
+                        if (response.isSuccessful()) {
+                            JSONObject jsonResponse = new JSONObject(responseBody);
+                            String aiResponse = jsonResponse
+                                .getJSONObject("output")
+                                .getJSONArray("choices")
+                                .getJSONObject(0)
+                                .getJSONObject("message")
+                                .getString("content");
+                            successCallback.onSuccess(aiResponse);
+                        } else {
+                            errorCallback.onError("API 错误：" + response.code());
+                        }
+                    } catch (Exception e) {
+                        errorCallback.onError("解析响应失败：" + e.getMessage());
+                    }
+                }
+            });
+        } catch (Exception e) {
+            errorCallback.onError("请求构建失败：" + e.getMessage());
         }
     }
     

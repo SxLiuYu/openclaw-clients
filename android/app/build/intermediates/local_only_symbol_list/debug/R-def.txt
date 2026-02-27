@@ -3,6 +3,7 @@ local
 color black
 color blue_500
 color green_500
+color ic_launcher_background
 color purple_200
 color purple_500
 color purple_700
@@ -11,10 +12,13 @@ color teal_700
 color white
 drawable border_blue
 drawable border_green
+drawable ic_launcher_foreground
 id btnStartStop
 id tvAiResponse
 id tvRecognizedText
 id tvStatus
 layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
 string app_name
 style Theme.OpenClawHomeAssistant
