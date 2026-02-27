@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
     private Button btnHistory;
     private Button btnDeviceData;
     private Button btnBattery;
+    private Button btnLocation;
+    private Button btnNetwork;
+    private Button btnStorage;
+    private Button btnContacts;
     private ImageButton btnSettings;
     private Switch switchTTS;
     
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private DashScopeService dashScopeService;
     private ConversationManager conversationManager;
     private DeviceDataReader deviceDataReader;
+    private ExtendedDeviceReader extendedDeviceReader;
     
     // 状态
     private boolean isListening = false;
@@ -101,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
         btnHistory = findViewById(R.id.btnHistory);
         btnDeviceData = findViewById(R.id.btnDeviceData);
         btnBattery = findViewById(R.id.btnBattery);
+        btnLocation = findViewById(R.id.btnLocation);
+        btnNetwork = findViewById(R.id.btnNetwork);
+        btnStorage = findViewById(R.id.btnStorage);
+        btnContacts = findViewById(R.id.btnContacts);
         btnSettings = findViewById(R.id.btnSettings);
         switchTTS = findViewById(R.id.switchTTS);
         
@@ -113,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         
         // 设备数据读取器
         deviceDataReader = new DeviceDataReader(this);
+        extendedDeviceReader = new ExtendedDeviceReader(this);
         
         // DashScope AI 服务
         dashScopeService = new DashScopeService(this);
@@ -251,7 +261,8 @@ public class MainActivity extends AppCompatActivity {
         btnDeviceData.setOnClickListener(v -> {
             if (deviceDataReader.hasUsageStatsPermission()) {
                 String deviceData = deviceDataReader.getDeviceSummary();
-                appendConversation("📊 设备数据:\n" + deviceData);
+                String deviceInfo = extendedDeviceReader.getDeviceInfo();
+                appendConversation("📊 设备数据:\n" + deviceData + "\n\n" + deviceInfo);
             } else {
                 new AlertDialog.Builder(this)
                     .setTitle("需要权限")
@@ -266,9 +277,48 @@ public class MainActivity extends AppCompatActivity {
         
         // 电池按钮
         btnBattery.setOnClickListener(v -> {
-            String battery = deviceDataReader.getBatteryStatus();
+            String battery = extendedDeviceReader.getBatteryHealth();
             String screenTime = deviceDataReader.getScreenTime();
-            appendConversation("🔋 " + battery + "\n📱 " + screenTime);
+            appendConversation("🔋 " + battery + "\n\n📱 " + screenTime);
+        });
+        
+        // 位置按钮
+        btnLocation.setOnClickListener(v -> {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) 
+                == PackageManager.PERMISSION_GRANTED) {
+                String location = extendedDeviceReader.getLocation();
+                appendConversation("📍 " + location);
+            } else {
+                locationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
+            }
+        });
+        
+        // 网络按钮
+        btnNetwork.setOnClickListener(v -> {
+            String network = extendedDeviceReader.getNetworkStatus();
+            String wifi = extendedDeviceReader.getWifiInfo();
+            appendConversation(network + "\n\n" + wifi);
+        });
+        
+        // 存储按钮
+        btnStorage.setOnClickListener(v -> {
+            String storage = extendedDeviceReader.getStorageInfo();
+            String ram = extendedDeviceReader.getRamInfo();
+            appendConversation(storage + "\n\n" + ram);
+        });
+        
+        // 联系人按钮
+        btnContacts.setOnClickListener(v -> {
+            new AlertDialog.Builder(this)
+                .setTitle("搜索联系人")
+                .setMessage("输入联系人姓名（留空显示全部）")
+                .setPositiveButton("搜索", (dialog, which) -> {
+                    // 简化版本：显示前 10 个联系人
+                    String contacts = extendedDeviceReader.searchContacts("");
+                    appendConversation("📞 " + contacts);
+                })
+                .setNegativeButton("取消", null)
+                .show();
         });
         
         // 设置按钮
@@ -321,6 +371,17 @@ public class MainActivity extends AppCompatActivity {
             permissionLauncher.launch(Manifest.permission.RECORD_AUDIO);
         }
     }
+    
+    // 位置权限请求器
+    private final ActivityResultLauncher<String> locationPermissionLauncher =
+        registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+            if (isGranted) {
+                String location = extendedDeviceReader.getLocation();
+                appendConversation("📍 " + location);
+            } else {
+                Toast.makeText(this, "位置权限被拒绝", Toast.LENGTH_SHORT).show();
+            }
+        });
     
     private void showPermissionDeniedDialog() {
         new AlertDialog.Builder(this)
@@ -397,6 +458,60 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 appendConversation("需要先授权应用使用统计权限");
             }
+            return;
+        }
+        
+        // 位置查询
+        if (text.contains("位置") || text.contains("我在哪") || text.contains("在哪里")) {
+            String location = extendedDeviceReader.getLocation();
+            appendConversation("📍 " + location);
+            return;
+        }
+        
+        // 网络状态
+        if (text.contains("网络") || text.contains("WiFi") || text.contains("wifi")) {
+            String network = extendedDeviceReader.getNetworkStatus();
+            String wifi = extendedDeviceReader.getWifiInfo();
+            appendConversation(network + "\n\n" + wifi);
+            return;
+        }
+        
+        // 设备信息
+        if (text.contains("设备信息") || text.contains("手机型号") || text.contains("什么手机")) {
+            String info = extendedDeviceReader.getDeviceInfo();
+            appendConversation(info);
+            return;
+        }
+        
+        // 存储信息
+        if (text.contains("存储") || text.contains("内存") || text.contains("空间")) {
+            String storage = extendedDeviceReader.getStorageInfo();
+            appendConversation(storage);
+            return;
+        }
+        
+        // 运行内存
+        if (text.contains("运行内存") || text.contains("RAM") || text.contains("运存")) {
+            String ram = extendedDeviceReader.getRamInfo();
+            appendConversation(ram);
+            return;
+        }
+        
+        // 联系人查询
+        if (text.contains("联系人") || text.contains("通讯录")) {
+            String query = text.replace("联系人", "").replace("通讯录", "").trim();
+            if (query.isEmpty()) {
+                query = "";
+            }
+            String contacts = extendedDeviceReader.searchContacts(query);
+            appendConversation("📞 " + contacts);
+            return;
+        }
+        
+        // 电池健康
+        if (text.contains("电池健康") || text.contains("电池状态")) {
+            String health = extendedDeviceReader.getBatteryHealth();
+            appendConversation(health);
             return;
         }
         

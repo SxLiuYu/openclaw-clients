@@ -135,7 +135,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="📊 设备数据"
+            android:text="📊 设备"
             android:backgroundTint="#FF9800"
             android:layout_marginEnd="4dp"
             android:textSize="12sp" />
@@ -147,6 +147,63 @@
             android:layout_weight="1"
             android:text="🔋 电池"
             android:backgroundTint="#9C27B0"
+            android:layout_marginStart="4dp"
+            android:textSize="12sp" />
+    </LinearLayout>
+    
+    <!-- 扩展功能按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📍 位置"
+            android:backgroundTint="#00BCD4"
+            android:layout_marginEnd="4dp"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnNetwork"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📶 网络"
+            android:backgroundTint="#009688"
+            android:layout_marginStart="4dp"
+            android:textSize="12sp" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnStorage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="💾 存储"
+            android:backgroundTint="#795548"
+            android:layout_marginEnd="4dp"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnContacts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📞 联系人"
+            android:backgroundTint="#E91E63"
             android:layout_marginStart="4dp"
             android:textSize="12sp" />
     </LinearLayout>
