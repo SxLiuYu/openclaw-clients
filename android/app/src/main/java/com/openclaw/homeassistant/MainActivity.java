@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 return "权限不足";
             case 7 /*ERROR_NETWORK*/:
                 return "网络错误";
-            case 7 /*ERROR_NETWORK*/_TIMEOUT:
+            case 8: /*NETWORK_TIMEOUT*/
                 return "网络超时";
             case 1 /*ERROR_NO_MATCH*/:
                 return "无法识别";
