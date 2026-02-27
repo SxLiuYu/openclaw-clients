@@ -321,9 +321,9 @@ public class MainActivity extends AppCompatActivity {
                 .show();
         });
         
-        // 设置按钮
+        // 设置按钮 - 打开配置管理
         btnSettings.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
             startActivity(intent);
         });
         
