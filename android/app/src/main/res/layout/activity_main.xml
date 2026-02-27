@@ -106,9 +106,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="🎤 语音输入"
+            android:text="🎤 语音"
             android:backgroundTint="#4CAF50"
-            android:layout_marginEnd="4dp" />
+            android:layout_marginEnd="4dp"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnHistory"
@@ -117,7 +118,37 @@
             android:layout_weight="1"
             android:text="📜 历史"
             android:backgroundTint="#2196F3"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            android:textSize="12sp" />
+    </LinearLayout>
+    
+    <!-- 设备数据按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnDeviceData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📊 设备数据"
+            android:backgroundTint="#FF9800"
+            android:layout_marginEnd="4dp"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnBattery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🔋 电池"
+            android:backgroundTint="#9C27B0"
+            android:layout_marginStart="4dp"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <!-- TTS 开关 -->

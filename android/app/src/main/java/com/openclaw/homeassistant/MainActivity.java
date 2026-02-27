@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSend;
     private Button btnVoice;
     private Button btnHistory;
+    private Button btnDeviceData;
+    private Button btnBattery;
     private ImageButton btnSettings;
     private Switch switchTTS;
     
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private TextToSpeech textToSpeech;
     private DashScopeService dashScopeService;
     private ConversationManager conversationManager;
+    private DeviceDataReader deviceDataReader;
     
     // 状态
     private boolean isListening = false;
@@ -96,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         btnSend = findViewById(R.id.btnSend);
         btnVoice = findViewById(R.id.btnVoice);
         btnHistory = findViewById(R.id.btnHistory);
+        btnDeviceData = findViewById(R.id.btnDeviceData);
+        btnBattery = findViewById(R.id.btnBattery);
         btnSettings = findViewById(R.id.btnSettings);
         switchTTS = findViewById(R.id.switchTTS);
         
@@ -105,6 +110,9 @@ public class MainActivity extends AppCompatActivity {
     private void initServices() {
         // 对话管理器
         conversationManager = new ConversationManager(this);
+        
+        // 设备数据读取器
+        deviceDataReader = new DeviceDataReader(this);
         
         // DashScope AI 服务
         dashScopeService = new DashScopeService(this);
@@ -239,6 +247,30 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         
+        // 设备数据按钮
+        btnDeviceData.setOnClickListener(v -> {
+            if (deviceDataReader.hasUsageStatsPermission()) {
+                String deviceData = deviceDataReader.getDeviceSummary();
+                appendConversation("📊 设备数据:\n" + deviceData);
+            } else {
+                new AlertDialog.Builder(this)
+                    .setTitle("需要权限")
+                    .setMessage("读取应用使用时间需要授权。请在设置中开启\"使用情况访问\"权限。")
+                    .setPositiveButton("去设置", (dialog, which) -> {
+                        deviceDataReader.openUsageStatsSettings();
+                    })
+                    .setNegativeButton("取消", null)
+                    .show();
+            }
+        });
+        
+        // 电池按钮
+        btnBattery.setOnClickListener(v -> {
+            String battery = deviceDataReader.getBatteryStatus();
+            String screenTime = deviceDataReader.getScreenTime();
+            appendConversation("🔋 " + battery + "\n📱 " + screenTime);
+        });
+        
         // 设置按钮
         btnSettings.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -338,6 +370,35 @@ public class MainActivity extends AppCompatActivity {
     
     private void processWithAI(String text) {
         tvStatus.setText("🤖 AI 思考中...");
+        
+        // 如果是查询设备数据
+        if (text.contains("步数") || text.contains("走了多少步")) {
+            int steps = deviceDataReader.getStepCount();
+            appendConversation("📊 今日步数：" + steps + " 步");
+            return;
+        }
+        
+        if (text.contains("电量") || text.contains("电池")) {
+            String battery = deviceDataReader.getBatteryStatus();
+            appendConversation("🔋 " + battery);
+            return;
+        }
+        
+        if (text.contains("屏幕时间") || text.contains("用了多久")) {
+            String screenTime = deviceDataReader.getScreenTime();
+            appendConversation("📱 " + screenTime);
+            return;
+        }
+        
+        if (text.contains("常用应用") || text.contains("应用使用")) {
+            if (deviceDataReader.hasUsageStatsPermission()) {
+                String apps = deviceDataReader.getTopApps();
+                appendConversation("📊 常用应用:\n" + apps);
+            } else {
+                appendConversation("需要先授权应用使用统计权限");
+            }
+            return;
+        }
         
         // 保存到对话上下文
         conversationManager.addToContext("user", text);
