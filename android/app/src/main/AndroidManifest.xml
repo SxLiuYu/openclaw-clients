@@ -61,6 +61,12 @@
             android:theme="@style/Theme.OpenClawHomeAssistant"
             android:exported="false" />
         
+        <activity
+            android:name=".AutomationRulesActivity"
+            android:label="自动化规则"
+            android:theme="@style/Theme.OpenClawHomeAssistant"
+            android:exported="false" />
+        
         <!-- 文件 Provider -->
         <provider
             android:name="androidx.core.content.FileProvider"

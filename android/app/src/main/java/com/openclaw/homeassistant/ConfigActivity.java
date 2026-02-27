@@ -59,6 +59,7 @@ public class ConfigActivity extends AppCompatActivity {
     private Button btnImport;
     private Button btnScanQR;
     private Button btnSave;
+    private Button btnManageRules;
     
     // 管理器
     private ConfigManager configManager;
@@ -108,6 +109,7 @@ public class ConfigActivity extends AppCompatActivity {
         btnImport = findViewById(R.id.btnImport);
         btnScanQR = findViewById(R.id.btnScanQR);
         btnSave = findViewById(R.id.btnSave);
+        btnManageRules = findViewById(R.id.btnManageRules);
         
         // 隐藏二维码图片
         ivQRCode.setVisibility(View.GONE);
@@ -154,8 +156,12 @@ public class ConfigActivity extends AppCompatActivity {
         btnImport.setOnClickListener(v -> showImportDialog());
         
         // 扫描二维码
-        btnScanQR.setOnClickListener(v -> {
-            Toast.makeText(this, "二维码扫描功能待实现", Toast.LENGTH_SHORT).show();
+        btnScanQR.setOnClickListener(v -> scanQRCode());
+        
+        // 管理规则
+        btnManageRules.setOnClickListener(v -> {
+            Intent intent = new Intent(ConfigActivity.this, AutomationRulesActivity.class);
+            startActivity(intent);
         });
         
         // 保存配置
@@ -299,10 +305,42 @@ public class ConfigActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_SCAN_QR);
     }
     
+    /**
+     * 扫描二维码导入配置
+     */
+    private void scanQRCode() {
+        // 使用 ZXing 集成扫码
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        integrator.setPrompt("扫描配置文件二维码");
+        integrator.setCameraId(0);
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(false);
+        integrator.initiateScan();
+    }
+    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         
+        // 处理二维码扫描结果
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (scanResult != null) {
+            if (scanResult.getContents() != null) {
+                // 扫描成功
+                if (configManager.importFromJson(scanResult.getContents())) {
+                    Toast.makeText(this, "配置导入成功", Toast.LENGTH_SHORT).show();
+                    loadConfig();
+                } else {
+                    Toast.makeText(this, "配置格式错误", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "扫描取消", Toast.LENGTH_SHORT).show();
+            }
+            return;
+        }
+        
+        // 处理文件导入
         if (requestCode == REQUEST_SCAN_QR && resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
             if (uri != null) {

@@ -22,6 +22,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -426,14 +430,132 @@ public class AutomationEngine {
     private String generateTemplateContent(String template) {
         switch (template) {
             case "weather_commute":
-                return "早上好！今天天气不错，适合出行。通勤路上请注意安全。";
+                return getWeatherAndCommute();
             case "tomorrow_weather":
-                return "明天天气晴朗，温度适宜，适合安排户外活动。";
+                return getTomorrowWeather();
             case "news_brief":
                 return "正在为您播报最新资讯...";
             default:
                 return null;
         }
+    }
+    
+    /**
+     * 获取实时天气 + 通勤建议
+     */
+    private String getWeatherAndCommute() {
+        try {
+            JSONObject weather = fetchWeather();
+            if (weather == null) {
+                return "早上好！天气信息获取失败，请注意查看实时天气。";
+            }
+            
+            String weatherText = weather.optString("weather", "晴");
+            int temp = weather.optInt("temp", 20);
+            String commuteAdvice = getCommuteAdvice(weatherText, temp);
+            
+            return String.format("早上好！北京今天%s，温度%d度。%s", weatherText, temp, commuteAdvice);
+            
+        } catch (Exception e) {
+            Log.e(TAG, "获取天气失败", e);
+            return "早上好！今天天气不错，通勤路上请注意安全。";
+        }
+    }
+    
+    /**
+     * 获取明日天气
+     */
+    private String getTomorrowWeather() {
+        try {
+            JSONObject weather = fetchWeather();
+            if (weather == null) {
+                return "明天天气信息获取失败，建议查看天气预报。";
+            }
+            
+            String weatherText = weather.optString("weather", "晴");
+            int temp = weather.optInt("temp", 20);
+            
+            return String.format("明天预计%s，温度%d度左右。", weatherText, temp);
+            
+        } catch (Exception e) {
+            Log.e(TAG, "获取天气失败", e);
+            return "明天天气晴朗，温度适宜。";
+        }
+    }
+    
+    /**
+     * 从 wttr.in 获取天气
+     */
+    private JSONObject fetchWeather() {
+        try {
+            URL url = new URL("http://wttr.in/Beijing?format=j1");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(5000);
+            conn.setRequestMethod("GET");
+            
+            BufferedReader reader = new BufferedReader(
+                new InputStreamReader(conn.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            reader.close();
+            conn.disconnect();
+            
+            JSONObject json = new JSONObject(sb.toString());
+            JSONObject current = json.getJSONObject("current_condition").getJSONArray(0).getJSONObject(0);
+            
+            JSONObject result = new JSONObject();
+            result.put("weather", mapWeatherDesc(current.getJSONObject("weatherDesc").getJSONArray(0).getJSONObject(0).getString("value")));
+            result.put("temp", current.getInt("temp_C"));
+            result.put("feels_like", current.getInt("FeelsLikeC"));
+            result.put("humidity", current.getInt("humidity"));
+            
+            return result;
+            
+        } catch (Exception e) {
+            Log.e(TAG, "获取天气失败", e);
+            return null;
+        }
+    }
+    
+    /**
+     * 天气描述映射
+     */
+    private String mapWeatherDesc(String enDesc) {
+        if (enDesc.contains("Sunny") || enDesc.contains("Clear")) return "晴";
+        if (enDesc.contains("Cloudy") || enDesc.contains("Overcast")) return "阴";
+        if (enDesc.contains("rain")) return "雨";
+        if (enDesc.contains("snow")) return "雪";
+        if (enDesc.contains("Mist") || enDesc.contains("Fog")) return "雾";
+        return "晴";
+    }
+    
+    /**
+     * 生成通勤建议
+     */
+    private String getCommuteAdvice(String weather, int temp) {
+        StringBuilder advice = new StringBuilder();
+        
+        if (weather.contains("雨")) {
+            advice.append("携带雨具，路面湿滑注意安全。");
+        } else if (weather.contains("雪")) {
+            advice.append("路面可能结冰，提前出门防滑。");
+        } else if (weather.contains("雾")) {
+            advice.append("能见度低，注意交通安全。");
+        } else {
+            advice.append("天气良好，适合出行。");
+        }
+        
+        if (temp < 5) {
+            advice.append("气温较低，注意保暖。");
+        } else if (temp > 30) {
+            advice.append("高温天气，注意防暑。");
+        }
+        
+        return advice.toString();
     }
     
     // ============== WakeLock ==============
