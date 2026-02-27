@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.speech.SpeechRecognizer;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -29,7 +30,7 @@ import java.util.Locale;
  * 3. 添加多轮对话支持
  * 4. 更好的错误提示
  */
-public class MainActivity_Fixed extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     
     private static final int RECORD_AUDIO_PERMISSION_CODE = 1;
     
@@ -188,7 +189,7 @@ public class MainActivity_Fixed extends AppCompatActivity {
             .setTitle("需要麦克风权限")
             .setMessage("语音识别需要麦克风权限。请在设置中手动开启。")
             .setPositiveButton("去设置", (dialog, which) -> {
-                Intent intent = new Intent(Settings.APPLICATION_DETAILS_SETTINGS);
+                Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                 intent.setData(Uri.fromParts("package", getPackageName(), null));
                 startActivity(intent);
             })
@@ -307,24 +308,15 @@ public class MainActivity_Fixed extends AppCompatActivity {
     
     private String getErrorText(int errorCode) {
         switch (errorCode) {
-            case SpeechRecognizer.ERROR_AUDIO_RECORDING:
-                return "录音错误";
-            case SpeechRecognizer.ERROR_CLIENT:
-                return "客户端错误";
-            case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS:
-                return "权限不足，请在设置中开启麦克风权限";
-            case SpeechRecognizer.ERROR_NETWORK:
-                return "网络错误";
-            case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
-                return "网络超时";
-            case SpeechRecognizer.ERROR_NO_MATCH:
-                return "无法识别";
-            case SpeechRecognizer.ERROR_RECOGNIZER_BUSY:
-                return "识别器忙碌";
-            case SpeechRecognizer.ERROR_SERVER:
-                return "服务器错误";
-            case SpeechRecognizer.ERROR_SPEECH_TIMEOUT:
-                return "语音超时";
+            case 5: return "录音错误";
+            case 6: return "客户端错误";
+            case 9: return "权限不足，请在设置中开启麦克风权限";
+            case 7: return "网络错误";
+            case 8: return "网络超时";
+            case 1: return "无法识别";
+            case 4: return "识别器忙碌";
+            case 3: return "服务器错误";
+            case 2: return "语音超时";
             default:
                 return "未知错误";
         }
