@@ -3,6 +3,7 @@ package com.openclaw.homeassistant;
 import android.content.Context;
 import android.content.SharedPreferences;
 import okhttp3.*;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.IOException;
@@ -15,7 +16,7 @@ public class DashScopeService {
     private final OkHttpClient client;
     private final SharedPreferences preferences;
     
-    public interface Callback {
+    public interface DashScopeCallback {
         void onSuccess(String response);
         void onError(String error);
     }
@@ -29,7 +30,7 @@ public class DashScopeService {
             .build();
     }
     
-    public void processQuery(String query, Callback callback) {
+    public void processQuery(String query, DashScopeCallback callback) {
         String apiKey = preferences.getString(API_KEY_PREFERENCE, "");
         if (apiKey.isEmpty()) {
             callback.onError("API密钥未配置");
