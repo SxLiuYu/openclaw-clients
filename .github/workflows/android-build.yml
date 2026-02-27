@@ -23,18 +23,9 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
     
-    - name: Pin Gradle version
-      run: |
-        cd android
-        echo "distributionBase=GRADLE_USER_HOME" > gradle/wrapper/gradle-wrapper.properties
-        echo "distributionPath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
-        echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip" >> gradle/wrapper/gradle-wrapper.properties
-        echo "zipStoreBase=GRADLE_USER_HOME" >> gradle/wrapper/gradle-wrapper.properties
-        echo "zipStorePath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
-    
-    - name: Build debug APK
+    - name: Build with Gradle wrapper
       working-directory: android
-      run: gradle assembleDebug --no-daemon
+      run: ./gradlew assembleDebug --no-daemon
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
