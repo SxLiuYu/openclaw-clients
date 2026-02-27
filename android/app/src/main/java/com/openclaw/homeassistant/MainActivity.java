@@ -188,23 +188,23 @@ public class MainActivity extends AppCompatActivity {
     
     private String getErrorText(int errorCode) {
         switch (errorCode) {
-            case SpeechRecognizer.ERROR_AUDIO_RECORDING:
+            case 5 /*ERROR_AUDIO_RECORDING*/:
                 return "音频录制错误";
-            case SpeechRecognizer.ERROR_CLIENT:
+            case 6 /*ERROR_CLIENT*/:
                 return "客户端错误";
-            case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS:
+            case 9 /*ERROR_INSUFFICIENT_PERMISSIONS*/:
                 return "权限不足";
-            case SpeechRecognizer.ERROR_NETWORK:
+            case 7 /*ERROR_NETWORK*/:
                 return "网络错误";
-            case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
+            case 7 /*ERROR_NETWORK*/_TIMEOUT:
                 return "网络超时";
-            case SpeechRecognizer.ERROR_NO_MATCH:
+            case 1 /*ERROR_NO_MATCH*/:
                 return "无法识别";
-            case SpeechRecognizer.ERROR_RECOGNIZER_BUSY:
+            case 4 /*ERROR_RECOGNIZER_BUSY*/:
                 return "识别器忙碌";
-            case SpeechRecognizer.ERROR_SERVER:
+            case 3 /*ERROR_SERVER*/:
                 return "服务器错误";
-            case SpeechRecognizer.ERROR_SPEECH_TIMEOUT:
+            case 2 /*ERROR_SPEECH_TIMEOUT*/:
                 return "语音超时";
             default:
                 return "未知错误";
