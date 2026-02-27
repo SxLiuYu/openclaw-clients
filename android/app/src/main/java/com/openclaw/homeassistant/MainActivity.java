@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
     private void processWithAI(String text) {
         tvAiResponse.setText("AI处理中...");
         
-        dashScopeService.processQuery(text, new DashScopeService.Callback() {
+        dashScopeService.processQuery(text, new DashScopeService.DashScopeCallback() {
             @Override
             public void onSuccess(String response) {
                 runOnUiThread(() -> {
