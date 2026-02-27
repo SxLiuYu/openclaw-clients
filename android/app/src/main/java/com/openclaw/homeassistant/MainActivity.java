@@ -392,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
         
         if (text.contains("常用应用") || text.contains("应用使用")) {
             if (deviceDataReader.hasUsageStatsPermission()) {
-                String apps = deviceDataReader.getTopApps();
+                String apps = deviceDataReader.getFormattedAppUsage();
                 appendConversation("📊 常用应用:\n" + apps);
             } else {
                 appendConversation("需要先授权应用使用统计权限");
