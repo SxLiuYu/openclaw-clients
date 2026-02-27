@@ -269,8 +269,15 @@ public class ExtendedDeviceReader {
      * 获取电池详细信息
      */
     public String getBatteryHealth() {
-        Intent intent = context.registerReceiver(null, 
-            new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        Intent intent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent = context.registerReceiver(null, 
+                new IntentFilter(Intent.ACTION_BATTERY_CHANGED),
+                Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            intent = context.registerReceiver(null, 
+                new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        }
         
         if (intent == null) {
             return "电池信息不可用";
