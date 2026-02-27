@@ -2,43 +2,57 @@ package com.openclaw.homeassistant;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.speech.SpeechRecognizer;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ScrollView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
 /**
- * Android 客户端 - 修复版
- * 修复问题:
- * 1. 权限请求处理不当
- * 2. 添加 TTS 语音合成
- * 3. 添加多轮对话支持
- * 4. 更好的错误提示
+ * Android 客户端 - 完整版
+ * 功能：
+ * 1. 语音识别 + TTS 朗读
+ * 2. 文字输入
+ * 3. 多轮对话上下文
+ * 4. 历史记录查看
+ * 5. API 密钥配置
  */
 public class MainActivity extends AppCompatActivity {
     
-    private static final int RECORD_AUDIO_PERMISSION_CODE = 1;
-    
     // UI 组件
+    private View statusIndicator;
     private TextView tvStatus;
-    private TextView tvRecognizedText;
-    private TextView tvAiResponse;
-    private Button btnStartStop;
+    private TextView tvConversation;
+    private EditText etInput;
+    private Button btnSend;
+    private Button btnVoice;
+    private Button btnHistory;
+    private ImageButton btnSettings;
+    private Switch switchTTS;
     
     // 服务
     private SpeechRecognizer speechRecognizer;
@@ -49,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
     // 状态
     private boolean isListening = false;
     private boolean isTTSReady = false;
+    private boolean isTTSEnabled = true;
+    private StringBuilder conversationDisplay = new StringBuilder();
     
-    // 权限请求器（新 API）
+    // 权限请求器
     private final ActivityResultLauncher<String> permissionLauncher =
         registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
             if (isGranted) {
@@ -68,57 +84,72 @@ public class MainActivity extends AppCompatActivity {
         
         initViews();
         initServices();
-        checkAndRequestPermission();
+        setupListeners();
+        loadSettings();
     }
     
     private void initViews() {
+        statusIndicator = findViewById(R.id.statusIndicator);
         tvStatus = findViewById(R.id.tvStatus);
-        tvRecognizedText = findViewById(R.id.tvRecognizedText);
-        tvAiResponse = findViewById(R.id.tvAiResponse);
-        btnStartStop = findViewById(R.id.btnStartStop);
+        tvConversation = findViewById(R.id.tvConversation);
+        etInput = findViewById(R.id.etInput);
+        btnSend = findViewById(R.id.btnSend);
+        btnVoice = findViewById(R.id.btnVoice);
+        btnHistory = findViewById(R.id.btnHistory);
+        btnSettings = findViewById(R.id.btnSettings);
+        switchTTS = findViewById(R.id.switchTTS);
         
-        btnStartStop.setOnClickListener(v -> {
-            if (isListening) {
-                stopListening();
-            } else {
-                checkAndRequestPermission();
-            }
-        });
-        
-        tvStatus.setText("点击按钮开始语音识别");
-        tvAiResponse.setText("AI 回复将显示在这里");
+        updateStatus(false, "未连接");
     }
     
     private void initServices() {
-        // 对话管理器（多轮对话）
+        // 对话管理器
         conversationManager = new ConversationManager(this);
         
         // DashScope AI 服务
         dashScopeService = new DashScopeService(this);
         
         // TTS 语音合成
-        textToSpeech = new TextToSpeech(this, status -> {
-            if (status == TextToSpeech.SUCCESS) {
-                int result = textToSpeech.setLanguage(Locale.CHINESE);
-                if (result == TextToSpeech.LANG_MISSING_DATA || 
-                    result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                    Toast.makeText(this, "TTS 不支持中文", Toast.LENGTH_SHORT).show();
-                } else {
-                    isTTSReady = true;
-                }
-            } else {
-                Toast.makeText(this, "TTS 初始化失败", Toast.LENGTH_SHORT).show();
-            }
-        });
+        initTTS();
         
         // 语音识别
         setupSpeechRecognizer();
     }
     
+    private void initTTS() {
+        try {
+            textToSpeech = new TextToSpeech(this, status -> {
+                if (status == TextToSpeech.SUCCESS) {
+                    int result = textToSpeech.setLanguage(Locale.CHINESE);
+                    if (result == TextToSpeech.LANG_MISSING_DATA || 
+                        result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        runOnUiThread(() -> {
+                            Toast.makeText(this, "TTS 不支持中文，请安装中文语音包", Toast.LENGTH_LONG).show();
+                            switchTTS.setChecked(false);
+                        });
+                    } else {
+                        isTTSReady = true;
+                        runOnUiThread(() -> {
+                            Toast.makeText(this, "TTS 初始化成功", Toast.LENGTH_SHORT).show();
+                        });
+                    }
+                } else {
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "TTS 初始化失败", Toast.LENGTH_SHORT).show();
+                        switchTTS.setChecked(false);
+                    });
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(this, "TTS 初始化异常：" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            switchTTS.setChecked(false);
+        }
+    }
+    
     private void setupSpeechRecognizer() {
         if (!SpeechRecognizer.isRecognitionAvailable(this)) {
-            Toast.makeText(this, "语音识别不可用", Toast.LENGTH_SHORT).show();
-            btnStartStop.setEnabled(false);
+            btnVoice.setEnabled(false);
+            btnVoice.setText("⛔ 不支持语音");
             return;
         }
         
@@ -126,28 +157,34 @@ public class MainActivity extends AppCompatActivity {
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onReadyForSpeech(Bundle params) {
-                tvStatus.setText("🎤 准备就绪，请说话...");
+                runOnUiThread(() -> {
+                    tvStatus.setText("🎤 准备就绪，请说话...");
+                    statusIndicator.setBackgroundResource(R.drawable.status_indicator_listening);
+                });
             }
             
             @Override
             public void onBeginningOfSpeech() {
-                tvStatus.setText("👂 正在听...");
+                runOnUiThread(() -> tvStatus.setText("👂 正在听..."));
             }
             
             @Override
             public void onEndOfSpeech() {
-                tvStatus.setText("⏳ 处理中...");
+                runOnUiThread(() -> tvStatus.setText("⏳ 处理中..."));
             }
             
             @Override
             public void onError(int error) {
-                tvStatus.setText("错误：" + getErrorText(error));
-                isListening = false;
-                btnStartStop.setText("🎤 开始识别");
-                
-                if (error == SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS) {
-                    showPermissionDeniedDialog();
-                }
+                runOnUiThread(() -> {
+                    tvStatus.setText("错误：" + getErrorText(error));
+                    isListening = false;
+                    btnVoice.setText("🎤 语音输入");
+                    statusIndicator.setBackgroundResource(R.drawable.status_indicator);
+                    
+                    if (error == SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS) {
+                        showPermissionDeniedDialog();
+                    }
+                });
             }
             
             @Override
@@ -155,11 +192,14 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 if (matches != null && !matches.isEmpty()) {
                     String recognizedText = matches.get(0);
-                    tvRecognizedText.setText("识别：" + recognizedText);
+                    appendConversation("👤 你：" + recognizedText);
                     processWithAI(recognizedText);
                 }
-                isListening = false;
-                btnStartStop.setText("🎤 开始识别");
+                runOnUiThread(() -> {
+                    isListening = false;
+                    btnVoice.setText("🎤 语音输入");
+                    statusIndicator.setBackgroundResource(R.drawable.status_indicator);
+                });
             }
             
             @Override
@@ -173,13 +213,79 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     
+    private void setupListeners() {
+        // 发送按钮
+        btnSend.setOnClickListener(v -> {
+            String text = etInput.getText().toString().trim();
+            if (!text.isEmpty()) {
+                appendConversation("👤 你：" + text);
+                processWithAI(text);
+                etInput.setText("");
+            }
+        });
+        
+        // 语音按钮
+        btnVoice.setOnClickListener(v -> {
+            if (isListening) {
+                stopListening();
+            } else {
+                checkAndRequestPermission();
+            }
+        });
+        
+        // 历史按钮
+        btnHistory.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+            startActivity(intent);
+        });
+        
+        // 设置按钮
+        btnSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+        
+        // TTS 开关
+        switchTTS.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            isTTSEnabled = isChecked;
+            SharedPreferences prefs = getSharedPreferences("OpenClawPrefs", MODE_PRIVATE);
+            prefs.edit().putBoolean("tts_enabled", isChecked).apply();
+        });
+        
+        // 输入框回车发送
+        etInput.setOnEditorActionListener((v, actionId, event) -> {
+            btnSend.performClick();
+            return true;
+        });
+    }
+    
+    private void loadSettings() {
+        SharedPreferences prefs = getSharedPreferences("OpenClawPrefs", MODE_PRIVATE);
+        isTTSEnabled = prefs.getBoolean("tts_enabled", true);
+        switchTTS.setChecked(isTTSEnabled);
+        
+        // 检查 API 密钥
+        String apiKey = prefs.getString("dashscope_api_key", "");
+        if (apiKey.isEmpty()) {
+            new AlertDialog.Builder(this)
+                .setTitle("⚠️ 需要配置 API 密钥")
+                .setMessage("请先在设置中配置 DashScope API 密钥才能使用 AI 对话功能。")
+                .setPositiveButton("去设置", (dialog, which) -> {
+                    Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                    startActivity(intent);
+                })
+                .setNegativeButton("稍后", null)
+                .show();
+        } else {
+            updateStatus(true, "已连接");
+        }
+    }
+    
     private void checkAndRequestPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) 
             == PackageManager.PERMISSION_GRANTED) {
-            // 权限已有，直接开始
             startListening();
         } else {
-            // 请求权限
             permissionLauncher.launch(Manifest.permission.RECORD_AUDIO);
         }
     }
@@ -189,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
             .setTitle("需要麦克风权限")
             .setMessage("语音识别需要麦克风权限。请在设置中手动开启。")
             .setPositiveButton("去设置", (dialog, which) -> {
-                Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                 intent.setData(Uri.fromParts("package", getPackageName(), null));
                 startActivity(intent);
             })
@@ -212,13 +318,11 @@ public class MainActivity extends AppCompatActivity {
             
             speechRecognizer.startListening(intent);
             isListening = true;
-            btnStartStop.setText("⏹️ 停止识别");
-            tvAiResponse.setText("请说话...");
-            
+            btnVoice.setText("⏹️ 停止录音");
         } catch (Exception e) {
             Toast.makeText(this, "启动失败：" + e.getMessage(), Toast.LENGTH_SHORT).show();
             isListening = false;
-            btnStartStop.setText("🎤 开始识别");
+            btnVoice.setText("🎤 语音输入");
         }
     }
     
@@ -226,13 +330,14 @@ public class MainActivity extends AppCompatActivity {
         if (speechRecognizer != null) {
             speechRecognizer.stopListening();
             isListening = false;
-            btnStartStop.setText("🎤 开始识别");
+            btnVoice.setText("🎤 语音输入");
             tvStatus.setText("已停止");
+            statusIndicator.setBackgroundResource(R.drawable.status_indicator);
         }
     }
     
     private void processWithAI(String text) {
-        tvAiResponse.setText("🤖 AI 思考中...");
+        tvStatus.setText("🤖 AI 思考中...");
         
         // 保存到对话上下文
         conversationManager.addToContext("user", text);
@@ -242,10 +347,10 @@ public class MainActivity extends AppCompatActivity {
             conversationManager.getContextForAPI(10);
         
         // 构建消息列表
-        org.json.JSONArray messages = new org.json.JSONArray();
+        JSONArray messages = new JSONArray();
         for (ConversationManager.Message msg : context) {
             try {
-                org.json.JSONObject msgObj = new org.json.JSONObject();
+                JSONObject msgObj = new JSONObject();
                 msgObj.put("role", msg.role);
                 msgObj.put("content", msg.content);
                 messages.put(msgObj);
@@ -254,44 +359,53 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         
-        // 添加当前消息
-        try {
-            org.json.JSONObject currentMsg = new org.json.JSONObject();
-            currentMsg.put("role", "user");
-            currentMsg.put("content", text);
-            messages.put(currentMsg);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
         // 调用 API
         dashScopeService.processQueryWithMessages(messages, response -> {
             runOnUiThread(() -> {
-                tvAiResponse.setText("AI: " + response);
+                appendConversation("🤖 AI：" + response);
+                tvStatus.setText("✅ 完成");
                 
                 // 保存到上下文
                 conversationManager.addToContext("assistant", response);
                 
                 // TTS 朗读
-                speakOut(response);
+                if (isTTSEnabled && isTTSReady) {
+                    speakOut(response);
+                }
             });
         }, error -> {
             runOnUiThread(() -> {
-                tvAiResponse.setText("❌ " + error);
+                appendConversation("❌ 错误：" + error);
+                tvStatus.setText("❌ 失败");
             });
         });
     }
     
+    private void appendConversation(String text) {
+        conversationDisplay.append(text).append("\n\n");
+        tvConversation.setText(conversationDisplay.toString());
+        
+        // 滚动到底部
+        final ScrollView scrollView = (ScrollView) ((View) tvConversation.getParent()).getParent();
+        scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
+    }
+    
     private void speakOut(String text) {
-        if (!isTTSReady) {
+        if (!isTTSEnabled || !isTTSReady) {
             return;
         }
         
-        // 停止当前朗读
         textToSpeech.stop();
-        
-        // 朗读新内容
         textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+    }
+    
+    private void updateStatus(boolean connected, String text) {
+        tvStatus.setText(text);
+        if (connected) {
+            statusIndicator.setBackgroundResource(R.drawable.status_indicator_connected);
+        } else {
+            statusIndicator.setBackgroundResource(R.drawable.status_indicator);
+        }
     }
     
     @Override
@@ -310,15 +424,14 @@ public class MainActivity extends AppCompatActivity {
         switch (errorCode) {
             case 5: return "录音错误";
             case 6: return "客户端错误";
-            case 9: return "权限不足，请在设置中开启麦克风权限";
+            case 9: return "权限不足";
             case 7: return "网络错误";
             case 8: return "网络超时";
             case 1: return "无法识别";
             case 4: return "识别器忙碌";
             case 3: return "服务器错误";
             case 2: return "语音超时";
-            default:
-                return "未知错误";
+            default: return "未知错误";
         }
     }
 }

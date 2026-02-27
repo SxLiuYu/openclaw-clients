@@ -1,70 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    android:background="#F5F5F5">
 
-    <TextView
-        android:id="@+id/tvStatus"
+    <!-- 状态栏 -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="准备就绪"
-        android:textSize="16sp"
-        android:textColor="@color/purple_500"
-        android:gravity="center"
-        android:paddingBottom="16dp"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="#2196F3">
 
-    <Button
-        android:id="@+id/btnStartStop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="开始识别"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
+        <View
+            android:id="@+id/statusIndicator"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/status_indicator" />
 
-    <TextView
-        android:id="@+id/tvRecognizedText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="识别结果: "
-        android:textSize="14sp"
-        android:padding="8dp"
-        android:background="@drawable/border_blue"
-        android:visibility="gone"/>
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="未连接"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/tvAiResponse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="AI回复: "
-        android:textSize="14sp"
-        android:padding="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/border_green"
-        android:visibility="gone"/>
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_preferences"
+            android:contentDescription="设置" />
+    </LinearLayout>
 
-    <View
+    <!-- 对话历史 -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        android:padding="12dp">
 
-    <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvConversation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🤖 你好！我是你的家庭助手。\n\n我可以：\n• 语音对话\n• 文字输入\n• 查看历史\n• TTS 朗读\n\n请点击下方按钮开始使用！"
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 文字输入区 -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="隐私说明"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:paddingTop="16dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical">
 
-    <TextView
+        <EditText
+            android:id="@+id/etInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="输入文字..."
+            android:padding="12dp"
+            android:background="@drawable/input_background"
+            android:inputType="text"
+            android:imeOptions="actionSend" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="发送"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
+    </LinearLayout>
+
+    <!-- 控制按钮 -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="• 仅使用麦克风权限进行语音识别\n• 音频在设备本地处理\n• 仅文本（非音频）发送到AI服务\n• 未经您的同意不收集任何个人数据"
-        android:textSize="12sp"
-        android:paddingTop="8dp"
-        android:lineSpacingExtra="4dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnVoice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🎤 语音输入"
+            android:backgroundTint="#4CAF50"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btnHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📜 历史"
+            android:backgroundTint="#2196F3"
+            android:layout_marginStart="4dp" />
+    </LinearLayout>
+
+    <!-- TTS 开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔊 TTS 朗读："
+            android:textSize="14sp" />
+
+        <Switch
+            android:id="@+id/switchTTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:checked="true" />
+    </LinearLayout>
 
 </LinearLayout>

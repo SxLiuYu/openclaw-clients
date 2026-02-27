@@ -25,6 +25,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".SettingsActivity"
+            android:label="设置"
+            android:theme="@style/Theme.OpenClawHomeAssistant" />
+        
+        <activity
+            android:name=".HistoryActivity"
+            android:label="历史记录"
+            android:theme="@style/Theme.OpenClawHomeAssistant" />
     </application>
 
 </manifest>
