@@ -16,18 +16,30 @@ class ChatViewModel: ObservableObject {
     @Published var apiKey: String = ""
     @Published var wsUrl: String = "ws://localhost:8080/ws"
     @Published var isTyping: Bool = false
+    @Published var chatHistory: [ChatSession] = []
     
     private var speechRecognizer: SFSpeechRecognizer?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private var audioEngine: AVAudioEngine?
     private var webSocketTask: URLSessionWebSocketTask?
+    private var conversationManager: ConversationManager?
+    private var speechSynthesizer: AVSpeechSynthesizer?
+    
+    struct ChatSession: Identifiable, Codable {
+        let id: String
+        let preview: String
+        let timestamp: Date
+        let messages: [Message]
+    }
     
     init() {
+        conversationManager = ConversationManager()
         loadSettings()
         setupSpeechRecognizer()
+        setupTTS()
         connectWebSocket()
-        addWelcomeMessage()
+        loadMessages()
     }
     
     private func loadSettings() {
@@ -43,9 +55,36 @@ class ChatViewModel: ObservableObject {
         connectWebSocket()
     }
     
+    private func setupTTS() {
+        speechSynthesizer = AVSpeechSynthesizer()
+    }
+    
+    func speak(_ text: String) {
+        guard UserDefaults.standard.bool(forKey: "tts_enabled") else { return }
+        
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "zh-CN")
+        utterance.rate = 0.5
+        speechSynthesizer?.speak(utterance)
+    }
+    
+    private func loadMessages() {
+        if let session = conversationManager?.getContext().last {
+            messages.append(Message(
+                content: session.content,
+                type: session.role == "user" ? .user : .assistant
+            ))
+        } else {
+            addWelcomeMessage()
+        }
+        chatHistory = conversationManager?.getHistory().map { session in
+            ChatSession(id: session.id, preview: session.preview, timestamp: session.timestamp, messages: session.messages)
+        } ?? []
+    }
+    
     private func addWelcomeMessage() {
         messages.append(Message(
-            content: "你好！我是你的家庭助手。你可以点击麦克风按钮对我说话，或者直接输入文字。",
+            content: "你好！我是你的家庭助手。支持语音、TTS 朗读、多轮对话和历史记录。",
             type: .assistant
         ))
     }
@@ -137,6 +176,7 @@ class ChatViewModel: ObservableObject {
         guard !text.trimmingCharacters(in: .whitespaces).isEmpty else { return }
         
         addMessage(text, type: .user)
+        conversationManager?.addToContext(role: "user", content: text)
         isTyping = true
         
         if isConnected, webSocketTask != nil {
@@ -287,10 +327,36 @@ class ChatViewModel: ObservableObject {
     
     func addMessage(_ content: String, type: MessageType) {
         messages.append(Message(content: content, type: type))
+        
+        // 保存到历史记录
+        if type == .assistant {
+            conversationManager?.addToHistory(messages: messages.map { msg in
+                ConversationManager.Message(role: msg.type == .user ? "user" : "assistant", content: msg.content)
+            })
+            chatHistory = conversationManager?.getHistory().map { session in
+                ChatSession(id: session.id, preview: session.preview, timestamp: session.timestamp, messages: session.messages)
+            } ?? []
+            
+            // TTS 朗读
+            speak(content)
+        }
     }
     
     func clearMessages() {
         messages.removeAll()
+        conversationManager?.clearContext()
         addWelcomeMessage()
+    }
+    
+    func clearHistory() {
+        conversationManager?.clearHistory()
+        chatHistory.removeAll()
+    }
+    
+    func loadSession(_ session: ChatSession) {
+        messages = session.messages
+        conversationManager?.conversationContext = session.messages.map { msg in
+            ConversationManager.Message(role: msg.type == .user ? "user" : "assistant", content: msg.content)
+        }
     }
 }

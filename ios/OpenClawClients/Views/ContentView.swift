@@ -12,6 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: ChatViewModel
     @State private var inputText: String = ""
     @State private var showSettings: Bool = false
+    @State private var showHistory: Bool = false
     
     var body: some View {
         NavigationView {
@@ -41,10 +42,19 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { showHistory.toggle() }) {
+                        Image(systemName: "clock.fill")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { showSettings.toggle() }) {
                         Image(systemName: "gearshape.fill")
                     }
                 }
+            }
+            .sheet(isPresented: $showHistory) {
+                HistoryView()
+                    .environmentObject(viewModel)
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView()
