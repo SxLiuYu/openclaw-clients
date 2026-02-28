@@ -158,7 +158,12 @@ public class ConfigManager {
     @Nullable
     public String exportToJson() {
         if (config == null) return null;
-        return config.toString(2);
+        try {
+            return config.toString(2);
+        } catch (JSONException e) {
+            Log.e(TAG, "导出 JSON 失败", e);
+            return null;
+        }
     }
     
     /**

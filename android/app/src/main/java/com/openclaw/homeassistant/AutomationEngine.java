@@ -505,10 +505,14 @@ public class AutomationEngine {
             conn.disconnect();
             
             JSONObject json = new JSONObject(sb.toString());
-            JSONObject current = json.getJSONObject("current_condition").getJSONArray(0).getJSONObject(0);
+            JSONArray currentCondition = json.getJSONArray("current_condition");
+            JSONObject current = currentCondition.getJSONObject(0);
+            
+            JSONArray weatherDesc = current.getJSONObject("weatherDesc").getJSONArray("weatherDesc");
+            String weatherEn = weatherDesc.getJSONObject(0).getString("value");
             
             JSONObject result = new JSONObject();
-            result.put("weather", mapWeatherDesc(current.getJSONObject("weatherDesc").getJSONArray(0).getJSONObject(0).getString("value")));
+            result.put("weather", mapWeatherDesc(weatherEn));
             result.put("temp", current.getInt("temp_C"));
             result.put("feels_like", current.getInt("FeelsLikeC"));
             result.put("humidity", current.getInt("humidity"));
