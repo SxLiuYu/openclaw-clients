@@ -104,6 +104,17 @@
             android:exported="false"
             android:label="自动化日志"
             android:theme="@style/Theme.OpenClawHomeAssistant" />
+        <activity
+            android:name="com.openclaw.homeassistant.HealthRemindersActivity"
+            android:exported="false"
+            android:label="健康关怀"
+            android:theme="@style/Theme.OpenClawHomeAssistant" />
+
+        <!-- 健康提醒接收器 -->
+        <receiver
+            android:name="com.openclaw.homeassistant.HealthReminderReceiver"
+            android:enabled="true"
+            android:exported="false" />
 
         <!-- 文件 Provider -->
         <provider

@@ -137,6 +137,13 @@
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btnHealthReminders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💚 健康关怀 (久坐/喝水/眼保健)"
+            android:layout_marginTop="8dp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

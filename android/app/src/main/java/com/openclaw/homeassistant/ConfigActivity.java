@@ -64,6 +64,7 @@ public class ConfigActivity extends AppCompatActivity {
     private Button btnSave;
     private Button btnManageRules;
     private Button btnViewLogs;
+    private Button btnHealthReminders;
     
     // 管理器
     private ConfigManager configManager;
@@ -115,6 +116,7 @@ public class ConfigActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
         btnManageRules = findViewById(R.id.btnManageRules);
         btnViewLogs = findViewById(R.id.btnViewLogs);
+        btnHealthReminders = findViewById(R.id.btnHealthReminders);
         
         // 隐藏二维码图片
         ivQRCode.setVisibility(View.GONE);
@@ -172,6 +174,12 @@ public class ConfigActivity extends AppCompatActivity {
         // 查看日志
         btnViewLogs.setOnClickListener(v -> {
             Intent intent = new Intent(ConfigActivity.this, AutomationLogActivity.class);
+            startActivity(intent);
+        });
+        
+        // 健康关怀
+        btnHealthReminders.setOnClickListener(v -> {
+            Intent intent = new Intent(ConfigActivity.this, HealthRemindersActivity.class);
             startActivity(intent);
         });
         

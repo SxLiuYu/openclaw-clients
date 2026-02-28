@@ -72,6 +72,18 @@
             android:theme="@style/Theme.OpenClawHomeAssistant"
             android:exported="false" />
         
+        <activity
+            android:name=".HealthRemindersActivity"
+            android:label="健康关怀"
+            android:theme="@style/Theme.OpenClawHomeAssistant"
+            android:exported="false" />
+        
+        <!-- 健康提醒接收器 -->
+        <receiver
+            android:name=".HealthReminderReceiver"
+            android:enabled="true"
+            android:exported="false" />
+        
         <!-- 文件 Provider -->
         <provider
             android:name="androidx.core.content.FileProvider"

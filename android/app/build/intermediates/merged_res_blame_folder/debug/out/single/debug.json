@@ -1,86 +1,94 @@
 [
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_main.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_main.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/layout_dialog_add_rule.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/layout/dialog_add_rule.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_input_background.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/drawable/input_background.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/layout_activity_history.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/layout/activity_history.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_border_green.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/drawable/border_green.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/layout_activity_config.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/layout/activity_config.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/drawable_status_indicator_listening.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/drawable/status_indicator_listening.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/xml_file_paths.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/xml/file_paths.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/drawable_input_background.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/drawable/input_background.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/drawable/ic_launcher_foreground.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/layout_activity_automation_log.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/layout/activity_automation_log.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_dialog_add_rule.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/layout/dialog_add_rule.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/layout_activity_settings.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/layout/activity_settings.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_automation_log.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_automation_log.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/drawable_border_green.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/drawable/border_green.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_automation_rules.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_automation_rules.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/xml_file_paths.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/xml/file_paths.xml"
+    },
+    {
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/layout_activity_main.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/layout/activity_main.xml"
     },
     {
         "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_config.xml.flat",
         "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_config.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_status_indicator_listening.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/drawable/status_indicator_listening.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/mipmap-hdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_status_indicator.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/drawable/status_indicator.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/layout_item_rule.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/layout/item_rule.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_item_log.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/layout/item_log.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/drawable_border_blue.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/drawable/border_blue.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/layout_activity_automation_rules.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/layout/activity_automation_rules.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/mipmap-hdpi/ic_launcher_round.png"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/drawable_status_indicator.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/drawable/status_indicator.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/mipmap-hdpi/ic_launcher.png"
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_health_reminders.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_health_reminders.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_settings.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_settings.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/layout_item_log.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/layout/item_log.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_item_rule.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/layout/item_rule.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/drawable_status_indicator_connected.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/drawable/status_indicator_connected.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_border_blue.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/drawable/border_blue.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_history.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_history.xml"
-    },
-    {
-        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_status_indicator_connected.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-34:/drawable/status_indicator_connected.xml"
+        "merged": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/admin/.gradle/daemon/8.0/com.openclaw.homeassistant.app-main-34:/mipmap-anydpi-v26/ic_launcher.xml"
     }
 ]
