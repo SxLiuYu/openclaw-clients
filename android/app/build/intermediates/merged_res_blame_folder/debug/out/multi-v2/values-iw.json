@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.openclaw.homeassistant.app-mergeDebugResources-29:/values-iw/values-iw.xml",
+            "outputFile": "com.openclaw.homeassistant.app-mergeDebugResources-30:/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "/home/admin/.gradle/caches/transforms-3/6c6ffd2b5c140a59a107fe5eaa0e19c4/transformed/appcompat-1.6.1/res/values-iw/values-iw.xml",
@@ -18,6 +18,23 @@
                         "startOffsets": "414,519,619,727,811,913,1029,1108,1186,1277,1371,1465,1559,1659,1752,1847,1940,2031,2123,2204,2309,2412,2510,2615,2717,2819,2973,7806",
                         "endColumns": "104,99,107,83,101,115,78,77,90,93,93,93,99,92,94,92,90,91,80,104,102,97,104,101,101,153,96,81",
                         "endOffsets": "514,614,722,806,908,1024,1103,1181,1272,1366,1460,1554,1654,1747,1842,1935,2026,2118,2199,2304,2407,2505,2610,2712,2814,2968,3065,7883"
+                    }
+                },
+                {
+                    "source": "/home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/res/values-iw/values-iw.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,111,161,296",
+                        "endColumns": "55,49,134,89",
+                        "endOffsets": "106,156,291,381"
+                    },
+                    "to": {
+                        "startLines": "99,100,101,102",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "7989,8045,8095,8230",
+                        "endColumns": "55,49,134,89",
+                        "endOffsets": "8040,8090,8225,8315"
                     }
                 },
                 {

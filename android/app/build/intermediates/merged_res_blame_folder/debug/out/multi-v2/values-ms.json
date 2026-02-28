@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.openclaw.homeassistant.app-mergeDebugResources-29:/values-ms/values-ms.xml",
+            "outputFile": "com.openclaw.homeassistant.app-mergeDebugResources-30:/values-ms/values-ms.xml",
             "map": [
                 {
                     "source": "/home/admin/.gradle/caches/transforms-3/543740e42155bb89dcbd6bdda0f43b68/transformed/core-1.9.0/res/values-ms/values-ms.xml",

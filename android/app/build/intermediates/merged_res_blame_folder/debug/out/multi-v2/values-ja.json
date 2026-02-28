@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.openclaw.homeassistant.app-mergeDebugResources-29:/values-ja/values-ja.xml",
+            "outputFile": "com.openclaw.homeassistant.app-mergeDebugResources-30:/values-ja/values-ja.xml",
             "map": [
                 {
                     "source": "/home/admin/.gradle/caches/transforms-3/476b26d8fcc09bc62d64d9d4afb0a264/transformed/material-1.9.0/res/values-ja/values-ja.xml",
@@ -54,6 +54,23 @@
                         "startOffsets": "7350",
                         "endColumns": "100",
                         "endOffsets": "7446"
+                    }
+                },
+                {
+                    "source": "/home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/res/values-ja/values-ja.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,109,156,256",
+                        "endColumns": "53,46,99,81",
+                        "endOffsets": "104,151,251,333"
+                    },
+                    "to": {
+                        "startLines": "97,98,99,100",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "7451,7505,7552,7652",
+                        "endColumns": "53,46,99,81",
+                        "endOffsets": "7500,7547,7647,7729"
                     }
                 }
             ]

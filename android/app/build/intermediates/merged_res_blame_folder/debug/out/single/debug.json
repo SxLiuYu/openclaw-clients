@@ -1,34 +1,78 @@
 [
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-31:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-33:/drawable/ic_launcher_foreground.xml"
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_main.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_main.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-31:/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "com.openclaw.homeassistant.app-main-33:/mipmap-hdpi/ic_launcher_round.png"
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_input_background.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/drawable/input_background.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_border_green.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/drawable/border_green.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-31:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.openclaw.homeassistant.app-main-33:/mipmap-hdpi/ic_launcher.png"
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-31:/layout_activity_main.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-33:/layout/activity_main.xml"
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/xml_file_paths.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/xml/file_paths.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-31:/drawable_border_blue.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-33:/drawable/border_blue.xml"
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_dialog_add_rule.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/layout/dialog_add_rule.xml"
     },
     {
-        "merged": "com.openclaw.homeassistant.app-merged_res-31:/drawable_border_green.xml.flat",
-        "source": "com.openclaw.homeassistant.app-main-33:/drawable/border_green.xml"
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_automation_rules.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_automation_rules.xml"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_config.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_config.xml"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_status_indicator_listening.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/drawable/status_indicator_listening.xml"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_status_indicator.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/drawable/status_indicator.xml"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_settings.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_item_rule.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/layout/item_rule.xml"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_border_blue.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/drawable/border_blue.xml"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_history.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_history.xml"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_status_indicator_connected.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/drawable/status_indicator_connected.xml"
     }
 ]

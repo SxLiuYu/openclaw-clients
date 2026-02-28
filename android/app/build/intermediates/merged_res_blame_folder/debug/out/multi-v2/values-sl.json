@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.openclaw.homeassistant.app-mergeDebugResources-29:/values-sl/values-sl.xml",
+            "outputFile": "com.openclaw.homeassistant.app-mergeDebugResources-30:/values-sl/values-sl.xml",
             "map": [
                 {
                     "source": "/home/admin/.gradle/caches/transforms-3/6c6ffd2b5c140a59a107fe5eaa0e19c4/transformed/appcompat-1.6.1/res/values-sl/values-sl.xml",
@@ -37,6 +37,23 @@
                         "endLines": "7,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96",
                         "endColumns": "12,88,88,87,97,90,105,125,83,65,93,75,62,111,59,64,53,69,59,55,111,56,61,55,72,133,84,84,142,83,82,88,55,54,65,72,76,83,73,75,74,72,87,72,89,90,71,73,90,51,66,83,86,61,63,62,102,96,97,96,59,58,76",
                         "endOffsets": "412,3241,3330,3418,3516,3607,3713,3839,3923,3989,4083,4159,4222,4334,4394,4459,4513,4583,4643,4699,4811,4868,4930,4986,5059,5193,5278,5363,5506,5590,5673,5762,5818,5873,5939,6012,6089,6173,6247,6323,6398,6471,6559,6632,6722,6813,6885,6959,7050,7102,7169,7253,7340,7402,7466,7529,7632,7729,7827,7924,7984,8043,8120"
+                    }
+                },
+                {
+                    "source": "/home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/res/values-sl/values-sl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,114,165,318",
+                        "endColumns": "58,50,152,99",
+                        "endOffsets": "109,160,313,413"
+                    },
+                    "to": {
+                        "startLines": "99,100,101,102",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "8310,8369,8420,8573",
+                        "endColumns": "58,50,152,99",
+                        "endOffsets": "8364,8415,8568,8668"
                     }
                 },
                 {
