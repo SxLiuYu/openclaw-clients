@@ -28,6 +28,10 @@
         "source": "com.openclaw.homeassistant.app-main-34:/layout/dialog_add_rule.xml"
     },
     {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_automation_log.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_automation_log.xml"
+    },
+    {
         "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_activity_automation_rules.xml.flat",
         "source": "com.openclaw.homeassistant.app-main-34:/layout/activity_automation_rules.xml"
     },
@@ -42,6 +46,10 @@
     {
         "merged": "com.openclaw.homeassistant.app-merged_res-32:/drawable_status_indicator.xml.flat",
         "source": "com.openclaw.homeassistant.app-main-34:/drawable/status_indicator.xml"
+    },
+    {
+        "merged": "com.openclaw.homeassistant.app-merged_res-32:/layout_item_log.xml.flat",
+        "source": "com.openclaw.homeassistant.app-main-34:/layout/item_log.xml"
     },
     {
         "merged": "com.openclaw.homeassistant.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher.xml.flat",

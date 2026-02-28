@@ -9,64 +9,64 @@
 9        android:targetSdkVersion="34" />
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:6:5-67
-11-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:6:22-64
+11-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:5:5-67
+11-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:5:22-64
 12    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-12-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:7:5-71
-12-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:7:22-68
+12-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:6:5-71
+12-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:6:22-68
 13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-13-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:8:5-79
-13-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:8:22-76
+13-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:7:5-79
+13-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:7:22-76
 14    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
-14-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:9:5-78
-14-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:9:22-75
+14-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:8:5-78
+14-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:8:22-75
 15    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-15-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:10:5-79
-15-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:10:22-76
+15-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:9:5-79
+15-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:9:22-76
 16    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-16-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:11:5-81
-16-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:11:22-78
+16-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:10:5-81
+16-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:10:22-78
 17    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-17-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:12:5-76
-17-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:12:22-73
+17-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:11:5-76
+17-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:11:22-73
 18    <uses-permission android:name="android.permission.READ_CONTACTS" />
-18-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:13:5-72
-18-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:13:22-69
+18-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:12:5-72
+18-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:12:22-69
 19    <uses-permission android:name="android.permission.CAMERA" />
-19-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:14:5-65
-19-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:14:22-62
+19-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:13:5-65
+19-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:13:22-62
 20    <uses-permission
-20-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:15:5-16:38
+20-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:14:5-15:38
 21        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-21-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:15:22-78
+21-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:14:22-78
 22        android:maxSdkVersion="28" />
-22-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:16:9-35
+22-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:15:9-35
 23    <uses-permission
-23-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:17:5-18:38
+23-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:16:5-17:38
 24        android:name="android.permission.READ_EXTERNAL_STORAGE"
-24-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:17:22-77
+24-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:16:22-77
 25        android:maxSdkVersion="32" />
-25-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:18:9-35
+25-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:17:9-35
 26
 27    <!-- 自动化所需权限 -->
 28    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-28-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:21:5-81
-28-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:21:22-78
+28-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:20:5-81
+28-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:20:22-78
 29    <uses-permission android:name="android.permission.WAKE_LOCK" />
-29-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:22:5-68
-29-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:22:22-65
+29-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:21:5-68
+29-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:21:22-65
 30    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-30-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:23:5-95
-30-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:23:22-92
+30-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:22:5-95
+30-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:22:22-92
 31    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-31-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:24:5-79
-31-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:24:22-76
+31-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:23:5-79
+31-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:23:22-76
 32    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
-32-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:25:5-74
-32-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:25:22-71
+32-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:24:5-74
+32-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:24:22-71
 33    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-33-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:26:5-77
-33-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:26:22-74
+33-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:25:5-77
+33-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:25:22-74
 34
 35    <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
 36    <uses-feature
@@ -119,177 +119,187 @@
 60-->[androidx.core:core:1.9.0] /home/admin/.gradle/caches/transforms-3/543740e42155bb89dcbd6bdda0f43b68/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 61
 62    <application
-62-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:28:5-98:19
+62-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:27:5-103:19
 63        android:allowBackup="true"
-63-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:29:9-35
+63-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:28:9-35
 64        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 64-->[androidx.core:core:1.9.0] /home/admin/.gradle/caches/transforms-3/543740e42155bb89dcbd6bdda0f43b68/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 65        android:debuggable="true"
 66        android:extractNativeLibs="true"
 67        android:icon="@mipmap/ic_launcher"
-67-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:30:9-43
+67-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:29:9-43
 68        android:label="@string/app_name"
-68-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:31:9-41
+68-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:30:9-41
 69        android:roundIcon="@mipmap/ic_launcher_round"
-69-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:32:9-54
+69-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:31:9-54
 70        android:supportsRtl="true"
-70-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:33:9-35
+70-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:32:9-35
 71        android:theme="@style/Theme.OpenClawHomeAssistant"
-71-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:34:9-59
+71-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:33:9-59
 72        android:usesCleartextTraffic="true" >
-72-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:35:9-44
+72-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:34:9-44
 73        <activity
-73-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:37:9-46:20
+73-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:36:9-45:20
 74            android:name="com.openclaw.homeassistant.MainActivity"
-74-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:38:13-41
+74-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:37:13-41
 75            android:exported="true"
-75-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:39:13-36
+75-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:38:13-36
 76            android:label="@string/app_name"
-76-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:40:13-45
+76-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:39:13-45
 77            android:theme="@style/Theme.OpenClawHomeAssistant" >
-77-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:41:13-63
+77-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:40:13-63
 78            <intent-filter>
-78-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:42:13-45:29
+78-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:41:13-44:29
 79                <action android:name="android.intent.action.MAIN" />
-79-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:43:17-69
-79-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:43:25-66
+79-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:42:17-69
+79-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:42:25-66
 80
 81                <category android:name="android.intent.category.LAUNCHER" />
-81-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:44:17-77
-81-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:44:27-74
+81-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:43:17-77
+81-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:43:27-74
 82            </intent-filter>
 83        </activity>
 84        <activity
-84-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:48:9-51:66
+84-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:47:9-50:66
 85            android:name="com.openclaw.homeassistant.SettingsActivity"
-85-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:49:13-45
+85-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:48:13-45
 86            android:label="设置"
-86-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:50:13-31
+86-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:49:13-31
 87            android:theme="@style/Theme.OpenClawHomeAssistant" />
-87-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:51:13-63
+87-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:50:13-63
 88        <activity
-88-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:53:9-56:66
+88-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:52:9-55:66
 89            android:name="com.openclaw.homeassistant.HistoryActivity"
-89-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:54:13-44
+89-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:53:13-44
 90            android:label="历史记录"
-90-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:55:13-33
+90-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:54:13-33
 91            android:theme="@style/Theme.OpenClawHomeAssistant" />
-91-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:56:13-63
+91-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:55:13-63
 92        <activity
-92-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:58:9-62:40
+92-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:57:9-61:40
 93            android:name="com.openclaw.homeassistant.ConfigActivity"
-93-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:59:13-43
+93-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:58:13-43
 94            android:exported="false"
-94-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:62:13-37
+94-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:61:13-37
 95            android:label="配置管理"
-95-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:60:13-33
+95-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:59:13-33
 96            android:theme="@style/Theme.OpenClawHomeAssistant" />
-96-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:61:13-63
+96-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:60:13-63
 97        <activity
-97-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:64:9-68:40
+97-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:63:9-67:40
 98            android:name="com.openclaw.homeassistant.AutomationRulesActivity"
-98-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:65:13-52
+98-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:64:13-52
 99            android:exported="false"
-99-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:68:13-37
+99-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:67:13-37
 100            android:label="自动化规则"
-100-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:66:13-34
+100-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:65:13-34
 101            android:theme="@style/Theme.OpenClawHomeAssistant" />
-101-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:67:13-63
-102
-103        <!-- 文件 Provider -->
-104        <provider
-105            android:name="androidx.core.content.FileProvider"
-105-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:72:13-62
-106            android:authorities="com.openclaw.homeassistant.fileprovider"
-106-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:73:13-64
-107            android:exported="false"
-107-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:74:13-37
-108            android:grantUriPermissions="true" >
-108-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:75:13-47
-109            <meta-data
-109-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:76:13-78:54
-110                android:name="android.support.FILE_PROVIDER_PATHS"
-110-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:77:17-67
-111                android:resource="@xml/file_paths" />
-111-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:78:17-51
-112        </provider>
-113
-114        <!-- 自动化启动接收器 -->
-115        <receiver
-115-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:82:9-90:20
-116            android:name="com.openclaw.homeassistant.AutomationBootReceiver"
-116-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:83:13-51
-117            android:enabled="true"
-117-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:84:13-35
-118            android:exported="true" >
-118-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:85:13-36
-119            <intent-filter>
-119-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:86:13-89:29
-120                <action android:name="android.intent.action.BOOT_COMPLETED" />
-120-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:87:17-79
-120-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:87:25-76
-121                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-121-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:88:17-82
-121-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:88:25-79
-122            </intent-filter>
-123        </receiver>
-124
-125        <!-- 自动化后台服务 -->
-126        <service
-126-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:93:9-97:52
-127            android:name="com.openclaw.homeassistant.AutomationService"
-127-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:94:13-46
-128            android:enabled="true"
-128-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:95:13-35
-129            android:exported="false"
-129-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:96:13-37
-130            android:foregroundServiceType="none" />
-130-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:97:13-49
+101-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:66:13-63
+102        <activity
+102-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:69:9-73:40
+103            android:name="com.openclaw.homeassistant.AutomationLogActivity"
+103-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:70:13-50
+104            android:exported="false"
+104-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:73:13-37
+105            android:label="自动化日志"
+105-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:71:13-34
+106            android:theme="@style/Theme.OpenClawHomeAssistant" />
+106-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:72:13-63
+107
+108        <!-- 文件 Provider -->
+109        <provider
+110            android:name="androidx.core.content.FileProvider"
+110-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:77:13-62
+111            android:authorities="com.openclaw.homeassistant.fileprovider"
+111-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:78:13-64
+112            android:exported="false"
+112-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:79:13-37
+113            android:grantUriPermissions="true" >
+113-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:80:13-47
+114            <meta-data
+114-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:81:13-83:54
+115                android:name="android.support.FILE_PROVIDER_PATHS"
+115-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:82:17-67
+116                android:resource="@xml/file_paths" />
+116-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:83:17-51
+117        </provider>
+118
+119        <!-- 自动化启动接收器 -->
+120        <receiver
+120-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:87:9-95:20
+121            android:name="com.openclaw.homeassistant.AutomationBootReceiver"
+121-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:88:13-51
+122            android:enabled="true"
+122-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:89:13-35
+123            android:exported="true" >
+123-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:90:13-36
+124            <intent-filter>
+124-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:91:13-94:29
+125                <action android:name="android.intent.action.BOOT_COMPLETED" />
+125-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:92:17-79
+125-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:92:25-76
+126                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+126-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:93:17-82
+126-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:93:25-79
+127            </intent-filter>
+128        </receiver>
+129
+130        <!-- 自动化后台服务 -->
 131        <service
-131-->[androidx.room:room-runtime:2.5.0] /home/admin/.gradle/caches/transforms-3/8a76ae09478cf7aada833fa601190a1c/transformed/room-runtime-2.5.0/AndroidManifest.xml:24:9-28:63
-132            android:name="androidx.room.MultiInstanceInvalidationService"
-132-->[androidx.room:room-runtime:2.5.0] /home/admin/.gradle/caches/transforms-3/8a76ae09478cf7aada833fa601190a1c/transformed/room-runtime-2.5.0/AndroidManifest.xml:25:13-74
-133            android:directBootAware="true"
-133-->[androidx.room:room-runtime:2.5.0] /home/admin/.gradle/caches/transforms-3/8a76ae09478cf7aada833fa601190a1c/transformed/room-runtime-2.5.0/AndroidManifest.xml:26:13-43
-134            android:exported="false" />
-134-->[androidx.room:room-runtime:2.5.0] /home/admin/.gradle/caches/transforms-3/8a76ae09478cf7aada833fa601190a1c/transformed/room-runtime-2.5.0/AndroidManifest.xml:27:13-37
-135
-136        <activity
-136-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
-137            android:name="com.journeyapps.barcodescanner.CaptureActivity"
-137-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:48:13-74
-138            android:clearTaskOnLaunch="true"
-138-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
-139            android:screenOrientation="sensorLandscape"
-139-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
-140            android:stateNotNeeded="true"
-140-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
-141            android:theme="@style/zxing_CaptureTheme"
-141-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
-142            android:windowSoftInputMode="stateAlwaysHidden" />
-142-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
-143
-144        <provider
-144-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-145            android:name="androidx.startup.InitializationProvider"
-145-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-146            android:authorities="com.openclaw.homeassistant.androidx-startup"
-146-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
-147            android:exported="false" >
-147-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
-148            <meta-data
-148-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-149                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-149-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-150                android:value="androidx.startup" />
-150-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-151            <meta-data
-151-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/admin/.gradle/caches/transforms-3/a08e537b82c7c1ecb0346f490fbd9592/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
-152                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-152-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/admin/.gradle/caches/transforms-3/a08e537b82c7c1ecb0346f490fbd9592/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
-153                android:value="androidx.startup" />
-153-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/admin/.gradle/caches/transforms-3/a08e537b82c7c1ecb0346f490fbd9592/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
-154        </provider>
-155    </application>
-156
-157</manifest>
+131-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:98:9-102:60
+132            android:name="com.openclaw.homeassistant.AutomationService"
+132-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:99:13-46
+133            android:enabled="true"
+133-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:100:13-35
+134            android:exported="false"
+134-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:101:13-37
+135            android:foregroundServiceType="shortService" />
+135-->/home/admin/.openclaw/workspace/openclaw-clients/android/app/src/main/AndroidManifest.xml:102:13-57
+136        <service
+136-->[androidx.room:room-runtime:2.5.0] /home/admin/.gradle/caches/transforms-3/8a76ae09478cf7aada833fa601190a1c/transformed/room-runtime-2.5.0/AndroidManifest.xml:24:9-28:63
+137            android:name="androidx.room.MultiInstanceInvalidationService"
+137-->[androidx.room:room-runtime:2.5.0] /home/admin/.gradle/caches/transforms-3/8a76ae09478cf7aada833fa601190a1c/transformed/room-runtime-2.5.0/AndroidManifest.xml:25:13-74
+138            android:directBootAware="true"
+138-->[androidx.room:room-runtime:2.5.0] /home/admin/.gradle/caches/transforms-3/8a76ae09478cf7aada833fa601190a1c/transformed/room-runtime-2.5.0/AndroidManifest.xml:26:13-43
+139            android:exported="false" />
+139-->[androidx.room:room-runtime:2.5.0] /home/admin/.gradle/caches/transforms-3/8a76ae09478cf7aada833fa601190a1c/transformed/room-runtime-2.5.0/AndroidManifest.xml:27:13-37
+140
+141        <activity
+141-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
+142            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+142-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:48:13-74
+143            android:clearTaskOnLaunch="true"
+143-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+144            android:screenOrientation="sensorLandscape"
+144-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
+145            android:stateNotNeeded="true"
+145-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+146            android:theme="@style/zxing_CaptureTheme"
+146-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+147            android:windowSoftInputMode="stateAlwaysHidden" />
+147-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/admin/.gradle/caches/transforms-3/c68c4351e62fbff08f07c9084b29a6e8/transformed/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+148
+149        <provider
+149-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+150            android:name="androidx.startup.InitializationProvider"
+150-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+151            android:authorities="com.openclaw.homeassistant.androidx-startup"
+151-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+152            android:exported="false" >
+152-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+153            <meta-data
+153-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+154                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+154-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+155                android:value="androidx.startup" />
+155-->[androidx.emoji2:emoji2:1.2.0] /home/admin/.gradle/caches/transforms-3/78e0f475248ccf690a14f03fa1cc16c2/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+156            <meta-data
+156-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/admin/.gradle/caches/transforms-3/a08e537b82c7c1ecb0346f490fbd9592/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+157                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+157-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/admin/.gradle/caches/transforms-3/a08e537b82c7c1ecb0346f490fbd9592/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+158                android:value="androidx.startup" />
+158-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/admin/.gradle/caches/transforms-3/a08e537b82c7c1ecb0346f490fbd9592/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+159        </provider>
+160    </application>
+161
+162</manifest>

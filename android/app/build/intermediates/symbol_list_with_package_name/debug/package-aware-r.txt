@@ -3137,6 +3137,7 @@ id bounceStart
 id btnAddRule
 id btnBattery
 id btnCancel
+id btnClear
 id btnClearHistory
 id btnContacts
 id btnDeviceData
@@ -3147,11 +3148,13 @@ id btnImport
 id btnLocation
 id btnManageRules
 id btnNetwork
+id btnRefresh
 id btnSave
 id btnScanQR
 id btnSend
 id btnSettings
 id btnStorage
+id btnViewLogs
 id btnVoice
 id buttonPanel
 id cache_measures
@@ -3543,8 +3546,12 @@ id transition_transform
 id triangle
 id tvContextLength
 id tvConversation
+id tvDetails
+id tvEmpty
 id tvName
 id tvStatus
+id tvTime
+id tvTitle
 id unchecked
 id uniform
 id unlabeled
@@ -3694,6 +3701,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_automation_log
 layout activity_automation_rules
 layout activity_config
 layout activity_history
@@ -3716,6 +3724,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_add_rule
+layout item_log
 layout item_rule
 layout m3_alert_dialog
 layout m3_alert_dialog_actions

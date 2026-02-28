@@ -63,6 +63,7 @@ public class ConfigActivity extends AppCompatActivity {
     private Button btnScanQR;
     private Button btnSave;
     private Button btnManageRules;
+    private Button btnViewLogs;
     
     // 管理器
     private ConfigManager configManager;
@@ -113,6 +114,7 @@ public class ConfigActivity extends AppCompatActivity {
         btnScanQR = findViewById(R.id.btnScanQR);
         btnSave = findViewById(R.id.btnSave);
         btnManageRules = findViewById(R.id.btnManageRules);
+        btnViewLogs = findViewById(R.id.btnViewLogs);
         
         // 隐藏二维码图片
         ivQRCode.setVisibility(View.GONE);
@@ -164,6 +166,12 @@ public class ConfigActivity extends AppCompatActivity {
         // 管理规则
         btnManageRules.setOnClickListener(v -> {
             Intent intent = new Intent(ConfigActivity.this, AutomationRulesActivity.class);
+            startActivity(intent);
+        });
+        
+        // 查看日志
+        btnViewLogs.setOnClickListener(v -> {
+            Intent intent = new Intent(ConfigActivity.this, AutomationLogActivity.class);
             startActivity(intent);
         });
         

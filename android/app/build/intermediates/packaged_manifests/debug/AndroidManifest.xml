@@ -99,6 +99,11 @@
             android:exported="false"
             android:label="自动化规则"
             android:theme="@style/Theme.OpenClawHomeAssistant" />
+        <activity
+            android:name="com.openclaw.homeassistant.AutomationLogActivity"
+            android:exported="false"
+            android:label="自动化日志"
+            android:theme="@style/Theme.OpenClawHomeAssistant" />
 
         <!-- 文件 Provider -->
         <provider
@@ -127,7 +132,7 @@
             android:name="com.openclaw.homeassistant.AutomationService"
             android:enabled="true"
             android:exported="false"
-            android:foregroundServiceType="none" />
+            android:foregroundServiceType="shortService" />
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
             android:directBootAware="true"

@@ -28,8 +28,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * 自动化引擎
@@ -47,6 +49,8 @@ public class AutomationEngine {
     private final Context context;
     private final ConfigManager configManager;
     private final DashScopeService dashScopeService;
+    private final NewsService newsService;
+    private final AutomationLogger logger;
     private TextToSpeech textToSpeech;
     
     private List<AutomationRule> activeRules;
@@ -66,6 +70,8 @@ public class AutomationEngine {
         this.context = context.getApplicationContext();
         this.configManager = configManager;
         this.dashScopeService = dashScopeService;
+        this.newsService = new NewsService();
+        this.logger = new AutomationLogger(context);
         this.activeRules = new ArrayList<>();
         
         initTTS();
@@ -355,25 +361,33 @@ public class AutomationEngine {
     // ============== 动作执行 ==============
     
     private void executeRule(AutomationRule rule) {
+        Log.d(TAG, "执行规则：" + rule.name);
+        
+        // 记录触发日志
+        logger.logTrigger(rule.id, rule.name, "auto");
+        
         // 获取 WakeLock 防止休眠
         acquireWakeLock();
         
         for (Action action : rule.actions) {
-            executeAction(action);
+            executeAction(action, rule.id);
         }
         
         releaseWakeLock();
     }
     
-    private void executeAction(Action action) {
+    private void executeAction(Action action, String ruleId) {
         Log.d(TAG, "执行动作：" + action.type);
+        
+        // 记录动作日志
+        logger.logAction(ruleId, action.type, action.title != null ? action.title : "");
         
         switch (action.type) {
             case "speak":
                 executeSpeak(action);
                 break;
             case "notify":
-                executeNotify(action);
+                executeNotify(action, ruleId);
                 break;
             case "launch":
                 executeLaunch(action);
@@ -395,7 +409,7 @@ public class AutomationEngine {
         }
     }
     
-    private void executeNotify(Action action) {
+    private void executeNotify(Action action, String ruleId) {
         NotificationManager manager = (NotificationManager) 
             context.getSystemService(Context.NOTIFICATION_SERVICE);
         if (manager == null) return;
@@ -403,14 +417,25 @@ public class AutomationEngine {
         String title = action.title;
         String message = action.message != null ? action.message : "";
         
+        // 创建点击 Intent
+        Intent clickIntent = new Intent(context, ConfigActivity.class);
+        clickIntent.putExtra("rule_id", ruleId);
+        clickIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+            context, ruleId.hashCode(), clickIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
+        
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setContentTitle(title)
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setAutoCancel(true);
+            .setAutoCancel(true)
+            .setContentIntent(pendingIntent);
         
-        manager.notify(action.title.hashCode(), builder.build());
+        manager.notify(ruleId.hashCode(), builder.build());
         Log.d(TAG, "发送通知：" + title);
     }
     
@@ -434,9 +459,31 @@ public class AutomationEngine {
             case "tomorrow_weather":
                 return getTomorrowWeather();
             case "news_brief":
-                return "正在为您播报最新资讯...";
+                return getNewsBrief();
             default:
                 return null;
+        }
+    }
+    
+    /**
+     * 获取简要资讯 (天气 +AI+ 财经)
+     */
+    private String getNewsBrief() {
+        try {
+            JSONObject weather = fetchWeather();
+            String weatherText = weather != null ? 
+                weather.optString("weather", "晴") + "，温度" + weather.optInt("temp", 20) + "度" : 
+                "天气信息获取失败";
+            
+            String aiNews = newsService.getAINewsBrief();
+            String financeNews = newsService.getFinanceNewsBrief();
+            
+            return String.format("早上好！北京今天%s。AI 动态：%s。财经：%s。", 
+                weatherText, aiNews, financeNews);
+            
+        } catch (Exception e) {
+            Log.e(TAG, "获取资讯失败", e);
+            return "早上好！最新资讯获取失败，请稍后重试。";
         }
     }
     
