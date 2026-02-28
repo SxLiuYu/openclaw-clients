@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.openclaw.homeassistant.app-mergeDebugResources-30:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.openclaw.homeassistant.app-mergeDebugResources-31:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
                     "source": "/home/admin/.gradle/caches/transforms-3/476b26d8fcc09bc62d64d9d4afb0a264/transformed/material-1.9.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",

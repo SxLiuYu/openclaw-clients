@@ -1090,6 +1090,7 @@ attr suffixText
 attr suffixTextAppearance
 attr suffixTextColor
 attr suggestionRowLayout
+attr swipeRefreshLayoutProgressSpinnerBackgroundColor
 attr switchMinWidth
 attr switchPadding
 attr switchStyle
@@ -3141,15 +3142,19 @@ id btnClear
 id btnClearHistory
 id btnContacts
 id btnDeviceData
+id btnDeviceList
 id btnExport
 id btnGenerateQR
 id btnHealthReminders
 id btnHistory
 id btnImport
 id btnLocation
+id btnLogin
+id btnLogout
 id btnManageRules
 id btnNetwork
 id btnRefresh
+id btnRegister
 id btnSave
 id btnScanQR
 id btnSend
@@ -3241,7 +3246,9 @@ id etApiKey
 id etBatteryLevel
 id etInput
 id etName
+id etPassword
 id etTime
+id etUsername
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3292,6 +3299,7 @@ id italic
 id item_touch_helper_previous_elevation
 id ivEdit
 id ivQRCode
+id ivStatus
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -3306,6 +3314,7 @@ id listHistory
 id listMode
 id listView
 id list_item
+id loginPanel
 id m3_side_sheet
 id marquee
 id masked
@@ -3499,6 +3508,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id swipeRefresh
 id switchAutomation
 id switchEnabled
 id switchEye
@@ -3551,9 +3561,13 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvBattery
 id tvContextLength
 id tvConversation
+id tvCurrentUser
 id tvDetails
+id tvDeviceModel
+id tvDeviceName
 id tvEmpty
 id tvEyeInterval
 id tvName
@@ -3715,6 +3729,7 @@ layout abc_tooltip
 layout activity_automation_log
 layout activity_automation_rules
 layout activity_config
+layout activity_device_list
 layout activity_health_reminders
 layout activity_history
 layout activity_main
@@ -3736,6 +3751,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_add_rule
+layout item_device
 layout item_log
 layout item_rule
 layout m3_alert_dialog
@@ -5215,6 +5231,7 @@ styleable State android_id constraints
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable
 styleable StateSet defaultState
+styleable SwipeRefreshLayout swipeRefreshLayoutProgressSpinnerBackgroundColor
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode
 styleable SwitchMaterial useMaterialThemeColors
 styleable TabItem android_icon android_layout android_text

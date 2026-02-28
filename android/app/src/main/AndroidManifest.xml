@@ -78,6 +78,12 @@
             android:theme="@style/Theme.OpenClawHomeAssistant"
             android:exported="false" />
         
+        <activity
+            android:name=".DeviceListActivity"
+            android:label="设备管理"
+            android:theme="@style/Theme.OpenClawHomeAssistant"
+            android:exported="false" />
+        
         <!-- 健康提醒接收器 -->
         <receiver
             android:name=".HealthReminderReceiver"

@@ -144,6 +144,13 @@
             android:text="💚 健康关怀 (久坐/喝水/眼保健)"
             android:layout_marginTop="8dp"/>
 
+        <Button
+            android:id="@+id/btnDeviceList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📱 设备管理 (多设备协同)"
+            android:layout_marginTop="8dp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

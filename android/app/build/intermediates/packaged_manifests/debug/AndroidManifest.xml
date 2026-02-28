@@ -109,6 +109,11 @@
             android:exported="false"
             android:label="健康关怀"
             android:theme="@style/Theme.OpenClawHomeAssistant" />
+        <activity
+            android:name="com.openclaw.homeassistant.DeviceListActivity"
+            android:exported="false"
+            android:label="设备管理"
+            android:theme="@style/Theme.OpenClawHomeAssistant" />
 
         <!-- 健康提醒接收器 -->
         <receiver
