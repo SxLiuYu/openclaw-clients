@@ -188,40 +188,51 @@ public class ConfigActivity extends AppCompatActivity {
     }
     
     private void saveConfig() {
-        // API Key
-        String apiKey = etApiKey.getText().toString().trim();
-        if (apiKey.isEmpty()) {
-            Toast.makeText(this, "请输入 API Key", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        configManager.setApiKey(apiKey);
-        
-        // TTS
-        configManager.setTTSEnabled(switchTTS.isChecked());
-        
-        // 自动化
-        boolean automationEnabled = switchAutomation.isChecked();
-        configManager.setAutomationEnabled(automationEnabled);
-        
-        // 上下文长度
-        configManager.setContextLength(seekContextLength.getProgress());
-        
-        // 重启自动化引擎（如果状态变更）
-        if (automationEnabled) {
-            if (automationEngine == null) {
-                DashScopeService dashScopeService = new DashScopeService(this);
-                automationEngine = new AutomationEngine(this, configManager, dashScopeService);
+        try {
+            // API Key
+            String apiKey = etApiKey.getText().toString().trim();
+            if (apiKey.isEmpty()) {
+                Toast.makeText(this, "请输入 API Key", Toast.LENGTH_SHORT).show();
+                return;
             }
-            automationEngine.reloadRules();
-        } else {
-            if (automationEngine != null) {
-                automationEngine.stop();
-                automationEngine = null;
+            configManager.setApiKey(apiKey);
+            
+            // TTS
+            if (switchTTS != null) {
+                configManager.setTTSEnabled(switchTTS.isChecked());
             }
+            
+            // 自动化
+            if (switchAutomation != null) {
+                boolean automationEnabled = switchAutomation.isChecked();
+                configManager.setAutomationEnabled(automationEnabled);
+                
+                // 重启自动化引擎（如果状态变更）
+                if (automationEnabled) {
+                    if (automationEngine == null) {
+                        DashScopeService dashScopeService = new DashScopeService(this);
+                        automationEngine = new AutomationEngine(this, configManager, dashScopeService);
+                    }
+                    automationEngine.reloadRules();
+                } else {
+                    if (automationEngine != null) {
+                        automationEngine.stop();
+                        automationEngine = null;
+                    }
+                }
+            }
+            
+            // 上下文长度
+            if (seekContextLength != null) {
+                configManager.setContextLength(seekContextLength.getProgress());
+            }
+            
+            Toast.makeText(this, "✅ 配置已保存", Toast.LENGTH_SHORT).show();
+            finish();
+            
+        } catch (Exception e) {
+            Toast.makeText(this, "❌ 保存失败：" + e.getMessage(), Toast.LENGTH_LONG).show();
         }
-        
-        Toast.makeText(this, "配置已保存", Toast.LENGTH_SHORT).show();
-        finish();
     }
     
     private void generateQRCode() {
@@ -311,8 +322,9 @@ public class ConfigActivity extends AppCompatActivity {
     private void showImportDialog() {
         new AlertDialog.Builder(this)
             .setTitle("导入配置")
-            .setMessage("选择导入方式：\n\n1. 扫描二维码（待实现）\n2. 从文件导入")
-            .setPositiveButton("从文件导入", (dialog, which) -> pickConfigFile())
+            .setMessage("选择导入方式：\n\n1. 扫描二维码\n2. 从文件导入")
+            .setPositiveButton("扫描二维码", (dialog, which) -> scanQRCode())
+            .setNeutralButton("从文件导入", (dialog, which) -> pickConfigFile())
             .setNegativeButton("取消", null)
             .show();
     }

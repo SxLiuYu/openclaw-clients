@@ -141,26 +141,25 @@ public class MainActivity extends AppCompatActivity {
                     int result = textToSpeech.setLanguage(Locale.CHINESE);
                     if (result == TextToSpeech.LANG_MISSING_DATA || 
                         result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        // 尝试使用英语
+                        textToSpeech.setLanguage(Locale.ENGLISH);
+                        isTTSReady = true;
                         runOnUiThread(() -> {
-                            Toast.makeText(this, "TTS 不支持中文，请安装中文语音包", Toast.LENGTH_LONG).show();
-                            switchTTS.setChecked(false);
+                            Toast.makeText(this, "TTS 已启用 (英文)", Toast.LENGTH_SHORT).show();
                         });
                     } else {
                         isTTSReady = true;
-                        runOnUiThread(() -> {
-                            Toast.makeText(this, "TTS 初始化成功", Toast.LENGTH_SHORT).show();
-                        });
                     }
-                } else {
-                    runOnUiThread(() -> {
-                        Toast.makeText(this, "TTS 初始化失败", Toast.LENGTH_SHORT).show();
-                        switchTTS.setChecked(false);
-                    });
                 }
+                // 失败时不显示 Toast，避免闪退
             });
         } catch (Exception e) {
-            Toast.makeText(this, "TTS 初始化异常：" + e.getMessage(), Toast.LENGTH_SHORT).show();
-            switchTTS.setChecked(false);
+            // TTS 不可用时不崩溃
+            isTTSReady = false;
+            if (switchTTS != null) {
+                switchTTS.setChecked(false);
+                switchTTS.setEnabled(false);
+            }
         }
     }
     

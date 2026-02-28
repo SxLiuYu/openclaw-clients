@@ -42,27 +42,40 @@ public class ExtendedDeviceReader {
      * 获取当前位置
      */
     public String getLocation() {
-        LocationManager locationManager = (LocationManager) 
-            context.getSystemService(Context.LOCATION_SERVICE);
-        
-        if (locationManager == null) {
-            return "位置服务不可用";
-        }
-        
         try {
+            LocationManager locationManager = (LocationManager) 
+                context.getSystemService(Context.LOCATION_SERVICE);
+            
+            if (locationManager == null) {
+                return "位置服务不可用";
+            }
+            
             // 检查权限
             if (androidx.core.content.ContextCompat.checkSelfPermission(
                     context, Manifest.permission.ACCESS_FINE_LOCATION) 
                     != PackageManager.PERMISSION_GRANTED) {
-                return "需要位置权限";
+                return "⚠️ 需要位置权限 (设置→应用→权限)";
+            }
+            
+            // 检查 GPS 是否启用
+            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                return "⚠️ GPS 未启用，请打开位置服务";
             }
             
             // 获取最后已知位置
-            Location location = locationManager.getLastKnownLocation(
-                LocationManager.GPS_PROVIDER);
+            Location location = null;
+            try {
+                location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            } catch (Exception e) {
+                // GPS 失败，尝试网络定位
+            }
+            
             if (location == null) {
-                location = locationManager.getLastKnownLocation(
-                    LocationManager.NETWORK_PROVIDER);
+                try {
+                    location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                } catch (Exception e) {
+                    return "无法获取位置，请检查网络连接";
+                }
             }
             
             if (location != null) {
@@ -70,16 +83,20 @@ public class ExtendedDeviceReader {
                 double lon = location.getLongitude();
                 
                 // 反向地理编码
-                Geocoder geocoder = new Geocoder(context, Locale.CHINA);
-                List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
-                if (addresses != null && !addresses.isEmpty()) {
-                    Address addr = addresses.get(0);
-                    StringBuilder sb = new StringBuilder();
-                    if (addr.getCountryName() != null) sb.append(addr.getCountryName());
-                    if (addr.getAdminArea() != null) sb.append(addr.getAdminArea());
-                    if (addr.getLocality() != null) sb.append(addr.getLocality());
-                    if (addr.getThoroughfare() != null) sb.append(addr.getThoroughfare());
-                    return sb.toString();
+                try {
+                    Geocoder geocoder = new Geocoder(context, Locale.CHINA);
+                    List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
+                    if (addresses != null && !addresses.isEmpty()) {
+                        Address addr = addresses.get(0);
+                        StringBuilder sb = new StringBuilder();
+                        if (addr.getCountryName() != null) sb.append(addr.getCountryName());
+                        if (addr.getAdminArea() != null) sb.append(addr.getAdminArea());
+                        if (addr.getLocality() != null) sb.append(addr.getLocality());
+                        if (addr.getThoroughfare() != null) sb.append(addr.getThoroughfare());
+                        return sb.toString();
+                    }
+                } catch (Exception e) {
+                    // 地理编码失败
                 }
                 
                 return String.format("纬度：%.4f, 经度：%.4f", lat, lon);
